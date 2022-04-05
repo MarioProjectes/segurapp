@@ -1,8 +1,10 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, TouchableWithoutFeedback, Image, View, SafeAreaView } from 'react-native';
+import { StyleSheet, Text, TouchableWithoutFeedback, Image, View, SafeAreaView, Platform } from 'react-native';
 import { TouchableOpacity } from 'react-native'; // permet mostrar botons clickats!
 import { TouchableNativeFeedback } from 'react-native';
+import { Dimensions } from 'react-native'; // Dimensions.get(screen | window) -> same on ios, diff in android
 
+import ConsellDiari from './ConsellDiari';
 
 export default function App() {
   const handlePress = () => {
@@ -11,9 +13,13 @@ export default function App() {
 
 
   return (
+      <ConsellDiari></ConsellDiari>
+    /*
     <SafeAreaView style={styles.container}>
       <View style={styles.topSquareStyle}>
-        <View style={styles.titolStyle}>
+        <View style={[styles.smallSquare, styles.squareTopLeft]}></View>
+        <View style={[styles.smallSquare, styles.squareTopRight]}></View>
+        <View>
           <Text style={styles.startTextStyle}> Segurapp</Text>
         </View>
         
@@ -26,6 +32,8 @@ export default function App() {
 
       </View>
       <View style={styles.bottomSquareStyle}>
+        <View style={[styles.smallSquare, styles.squareBottomLeft]}></View>
+        <View style={[styles.smallSquare, styles.squareBottomRight]}></View>
         <TouchableNativeFeedback>
           <View style={styles.botoProjecte}> 
             <Text style={styles.startTextStyle}>Sobre el {"\n"} projecte</Text>
@@ -34,6 +42,7 @@ export default function App() {
         </TouchableNativeFeedback>        
       </View>
     </SafeAreaView>
+    */
   )
 }
 
@@ -44,7 +53,40 @@ const styles = StyleSheet.create({
     backgroundColor: '#C8D7F0',
     alignItems: 'center',
     justifyContent: 'center',
-  },
+    paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
+    },
+    
+    topSquareStyle: {
+      flex: 0,
+
+      justifyContent: 'center',
+      alignItems: 'center',
+      
+      height: 280,
+      minWidth: 271,
+      width: 217,
+      aspectRatio: 271 / 280,
+      borderColor: 'black',
+      borderWidth: 2,
+      marginTop: '5%',
+      marginBottom: 124,
+  
+    },
+  
+    bottomSquareStyle: {
+      flex: 0,
+
+      justifyContent: 'center',
+      alignItems: 'center',
+    
+      height: 153,
+      minWidth: 271,
+      width: 217,
+      aspectRatio: 271 / 153,
+      borderColor: 'black',
+      borderWidth: 2,
+      marginBottom: '6.875%',
+    },
 
   botoComeça: {
     flex: 0,
@@ -83,49 +125,44 @@ const styles = StyleSheet.create({
     //boxSizing: border-box,
   },
 
-  titolStyle: {
-    position: 'absolute',
-    
-  },
-
   startTextStyle: {
     justifyContent: 'center',
+    alignItems: 'center',
     color: 'black',
     textAlign: 'center',
-    alignItems: 'center',
     fontSize: 36,
   },
 
-  topSquareStyle: {
-    position: 'relative',
-    flex: 0,
-    justifyContent: 'center',
-    alignItems: 'center',
-    
-    height: 280,
-    minWidth: 271,
-    width: 217,
-    aspectRatio: 271 / 280,
-    borderColor: 'black',
-    borderWidth: 2,
-    marginTop: '5%',
-    marginBottom: 124,
-
-  },
-
-  bottomSquareStyle: {
-    position: 'relative',
-    flex: 0,
-    justifyContent: 'center',
-    alignItems: 'center',
   
-    height: 153,
-    minWidth: 271,
-    width: 217,
-    aspectRatio: 271 / 153,
-    borderColor: 'black',
+  smallSquare: {
     borderWidth: 2,
-    marginBottom: '6.875%',
+    borderColor: 'black',
+    position: 'absolute',
+    width: 25,
+    height: 25,
+    aspectRatio: 1 / 1,
+  },
+  
+  squareTopLeft: {
+    borderWidth: 2,
+    left: '-9.3%',
+    top: '-9%',
   },
 
+
+  squareTopRight: {
+    right: '-9.3%',
+    top: '-9%',
+  },
+
+  squareBottomLeft: {
+    left: '-9.3%',
+    bottom: '-16.8%',
+  },
+
+
+  squareBottomRight: {
+    right: '-9.3%',
+    bottom: '-16.8%',
+  },
 })

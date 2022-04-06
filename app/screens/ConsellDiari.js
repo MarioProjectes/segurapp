@@ -5,6 +5,9 @@ import { TouchableOpacity } from 'react-native'; // permet mostrar botons clicka
 import { TouchableNativeFeedback } from 'react-native';
 import { Dimensions } from 'react-native'; // Dimensions.get(screen | window) -> same on ios, diff in android
 import { StatusBar } from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome';
+import { color } from 'react-native/Libraries/Components/View/ReactNativeStyleAttributes';
+import colors from '../config/colors';
 
 
 export default function ConsellDiari() {
@@ -17,7 +20,7 @@ export default function ConsellDiari() {
     <SafeAreaView style={styles.container}>
         <StatusBar
             animated={true}
-            backgroundColor='#7084ab' // alternatives: '#7d94be' ,'#67799c'
+            backgroundColor= {colors.statusbarBackgroundColor} // alternatives: '#7d94be' ,'#67799c'
             barStyle="light-content"
             translucent={true}
         />
@@ -44,26 +47,25 @@ export default function ConsellDiari() {
         </View>
 
         <View style={styles.barStyle}>
+            <View style={{height: 60, width: 60, position: 'absolute', backgroundColor: 'red',
+                left:  Dimensions.get('window').width <= 360 ? '2%' :  15,  justifyContent: 'center', alignItems: 'center'}}>
+                <Icon name="share" style={styles.returnArrow}></Icon>
+            </View>
+            
+            <Icon style={{fontSize: 50, padding: 5,  backgroundColor: 'red',}}name="home"></Icon>
             
         </View>
+                
     </SafeAreaView>
   )
 }
-
-/*
-Colors:
-    Barra: 9BB7EC
-    Fons app: c2d2ed
-    Fons text: d3e1fb
-
-*/
 
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'column',
-    backgroundColor: '#c2d2ed',
+    backgroundColor: colors.mainBackgroundColor,
     alignItems: 'center',
     justifyContent: 'center',
     paddingTop: Platform.OS === 'android' ?  Constants.statusBarHeight : 0,
@@ -71,11 +73,11 @@ const styles = StyleSheet.create({
 
     barStyle: {
         flexDirection: 'row',
-        backgroundColor: '#9BB7EC',
+        backgroundColor: colors.barBackgroundColor,
         height: 80,
         width: '100%',
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
     },
 
     textTitolStyle: {
@@ -85,12 +87,12 @@ const styles = StyleSheet.create({
     smallSquare: {
         position: 'absolute',
         borderWidth: 2,
-        borderColor: 'black',
+        borderColor: colors.borderColor,
         borderRadius: 13,
         width: 40,
         height: 40,
         aspectRatio: 1 / 1,
-        backgroundColor: '#C8D7F0',
+        backgroundColor: colors.textBackgroundColor,
         left: Dimensions.get('window').width <= 360 ? '3%' :  20,
 
         justifyContent: 'center',
@@ -107,12 +109,21 @@ const styles = StyleSheet.create({
     textSquare: {
         paddingHorizontal: '10%',
         paddingVertical: '5%',
-        borderColor: 'black',
+        borderColor: colors.borderColor,
         borderWidth: 1,
         borderRadius: 20,
-        backgroundColor: '#d3e1fb',
+        backgroundColor: colors.textBackgroundColor,
 
         justifyContent: 'center',
         alignItems: 'center',
-    }
+    },
+
+    returnArrow :{
+        position: 'absolute',
+        //left: Dimensions.get('window').width <= 360 ? '3%' :  20,
+        fontSize: 30,
+        padding: 5,
+        paddingTop: 10,
+        transform: [{rotateY: '180deg'}]
+    },
 })

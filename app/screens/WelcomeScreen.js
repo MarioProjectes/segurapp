@@ -4,14 +4,18 @@ import { StyleSheet, Text, TouchableWithoutFeedback, Image, View, SafeAreaView, 
 import { TouchableOpacity } from 'react-native'; // permet mostrar botons clickats!
 import { TouchableNativeFeedback } from 'react-native';
 import { Dimensions } from 'react-native'; // Dimensions.get(screen | window) -> same on ios, diff in android
+import { Alert, TouchableHighlight } from 'react-native';
+
 
 import colors from '../config/colors'
 
-export default function WelcomeScreen() {
+export default function WelcomeScreen({navigation}) {
   const handlePress = () => {
   }
 
-
+  const handlePressComença = () => {
+      navigation.navigate('ConsellDiari')
+  };
 
   return (
     <SafeAreaView style={styles.container}>
@@ -30,7 +34,7 @@ export default function WelcomeScreen() {
         </View>
         
 
-        <TouchableNativeFeedback>
+        <TouchableNativeFeedback onPress={handlePressComença}>
           <View style={styles.botoComeça}>
             <Text style={styles.startTextStyle}>Comença</Text>
           </View>

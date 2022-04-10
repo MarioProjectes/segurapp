@@ -5,31 +5,26 @@ import { FlatList } from 'react-native';
 import { Dimensions } from 'react-native'; // Dimensions.get(screen | window) -> same on ios, diff in android
 import { color } from 'react-native/Libraries/Components/View/ReactNativeStyleAttributes';
 import { StatusBar } from 'react-native';
-import { ScrollView } from 'react-native';
 
 
 import colors from '../config/colors';
 import Footer from '../shared/footer';
 import Header from '../shared/header';
-import ScrollBox from '../shared/ScrollBox';
+import ConsellBox from '../shared/ConsellBox'
+
+
+
 
 export default function ConsellDiari({navigation}) {
 
-  /*
 
-<Text style={[{textAlign: 'center'}, styles.textTitolStyle]}>
-                        La relació entre la privacitat i la comoditat
-                    </Text>
-
-
-{item.text}
-
-                              
+/*
+ <div>
+              //{(!cardFlipped) ? <ConsellBox/> : <ScrollBox/> }
+            </div>
+*/
 
 
-
-
-  */
   return (
     <SafeAreaView style={styles.container}>
           <StatusBar
@@ -40,11 +35,10 @@ export default function ConsellDiari({navigation}) {
             translucent={true}
         />
         
-        <ScrollBox/>
+         <ConsellBox navigation={navigation}/> 
 
 
-        <Footer></Footer>
-                
+        <Footer/>
     </SafeAreaView>
   )
 }

@@ -27,7 +27,11 @@ const AppNavigator = ({navigation}) => (
             />
             <Stack.Screen 
                 options={{ 
-                    header: () =>  <Header navigation={navigation} title="Consell del dia"/>,
+                    header: () =>  
+                        <Header 
+                            navigation={navigation} 
+                            title="Consell del dia"
+                            param= {true}/>,
                 }}
                 name="ConsellDiari"
                 component={ConsellDiari}

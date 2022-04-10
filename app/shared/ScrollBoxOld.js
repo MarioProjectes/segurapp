@@ -4,11 +4,9 @@ import { Dimensions } from 'react-native'; // Dimensions.get(screen | window) ->
 import { StatusBar } from 'react-native';
 import Constants from 'expo-constants'
 import { ScrollView } from 'react-native';
-import { TouchableNativeFeedback } from 'react-native';
 import { useState} from 'react'
 
 import colors from '../config/colors';
-import { color } from 'react-native/Libraries/Components/View/ReactNativeStyleAttributes';
 
 const items = [
     {name: "Item 1", text: "La relació entre la privacitat i la comoditat", key: 1},
@@ -16,48 +14,39 @@ const items = [
 ]
 
 
+//const [stateName, functionToChangeState] = useState('initialValue');
+const [display, changeDisplay] = useState()
+
 
 
 export default function ScrollBox({navigation}) {
-    
-    const [adviceRead, markRead] = useState(false);
-    
-    
-    
-    const handlePressEntesos = () => {
-      markRead({adviceRead: true});
-      navigation.setParams({param : false})
+    const changeDisplay = () =>{
+        
     }
-
-
+    
     return (
-        <View style={{flex: 1, justifyContent: 'center', }}>
-            <View style={{flex: 0}}>
-                    <Text style={[styles.textTitleStyle, {backgroundColor: colors.mainBackgroundColor}]}>
+        <View style={{flex: 1, justifyContent: 'center'}}>
+            <View style={styles.textSquare}>
+                <View style={{backgroundColor: 'red', marginTop: 10, marginBottom: 20}}>
+                    <Text style={styles.textTitleStyle}>
                         {items[0].text}
                     </Text>
                 </View>
-                <View style={{flex: 1, marginBottom: 5, borderRadius: 20, overflow: "hidden"}}>
-                    <ScrollView contentContainerStyle={styles.scrollStyle} >
+                <View style={{height: '80%', marginBottom: -10, borderRadius: 20, overflow: "hidden"}}>
+                    <ScrollView>
                         <View>
                             <Text style={styles.textBodyStyle}>
                                 {items[1].text}
                             </Text>
+
                         </View>
-
-                        <TouchableNativeFeedback onPress={handlePressEntesos}>
-                            <View style={styles.entesosSquare}>
-                                <Text style={{color: 'black', fontSize: 24}}> Entesos!</Text>
-                            </View>
-
-                        </TouchableNativeFeedback>
                     </ScrollView>
 
                 </View>
 
+            </View>
 
         </View>
-
     )
 }
 
@@ -90,36 +79,21 @@ const styles = StyleSheet.create({
           fontSize: 22,
           fontWeight: '700',
           color: colors.textBlack,
-
-          marginTop: -10,
-          marginBottom: 5,
       },
   
-      scrollStyle: {
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: colors.textBackgroundColor,
-      },
-
       textBodyStyle: {
           textAlign: 'justify',
+          alignContent: 'center',
 
           fontSize: 18,
+          backgroundColor: colors.textBackgroundColor,
+          borderRadius: 10,
 
           paddingHorizontal: 20,
-          //paddingTop: 20,
-          //marginBottom: 0,
-      },
+          paddingTop: 20,
+          marginBottom: 0,
+      }
   
-      entesosSquare:{
-          borderColor: colors.borderColor,
-          borderWidth: 2,
-          borderRadius: 20,
-          backgroundColor: colors.barBackgroundColor,
-
-          marginVertical: 40,
-          padding: 10,
-          paddingHorizontal: 50,
-      },
+  
   })
   

@@ -11,6 +11,8 @@ import { Dimensions } from 'react-native'; // Dimensions.get(screen | window) ->
 import WelcomeScreen from './app/screens/WelcomeScreen';
 import ConsellDiari from './app/screens/ConsellDiari';
 import AppNavigator from './app/app.navigator';
+import ConsellNumericament from './app/screens/ConsellNumericament';
+
 
 
 export default function App() {
@@ -36,6 +38,11 @@ export function registerScreens() {
     () => gestureHandlerRootHOC(WelcomeScreen),
     () => WelcomeScreen
   );
+  Navigation.registerComponent(
+    'ConsellNumericament',
+    () => gestureHandlerRootHOC(ConsellNumericament),
+    () => ConsellNumericament
+  )
 
 }
 

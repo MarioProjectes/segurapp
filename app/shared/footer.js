@@ -4,16 +4,17 @@ import { Dimensions } from 'react-native'; // Dimensions.get(screen | window) ->
 import { TouchableNativeFeedback } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { useNavigation } from '@react-navigation/native';
+import { Alert } from 'react-native';
 
 
 import colors from '../config/colors';
-import { Alert } from 'react-native';
+import ConsellBox from './ConsellBox';
 
 export default function Footer({}){
     const navigation = useNavigation();
-
+ 
     const handlePressArrow = () => {
-        navigation.goBack();
+        navigation.navigate('ConsellNumericament')
     }
   
     const handlePressHomeButton = () => {

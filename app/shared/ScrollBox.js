@@ -7,8 +7,8 @@ import { ScrollView } from 'react-native';
 import { TouchableNativeFeedback } from 'react-native';
 import { useState} from 'react'
 
+
 import colors from '../config/colors';
-import { color } from 'react-native/Libraries/Components/View/ReactNativeStyleAttributes';
 
 const items = [
     {name: "Item 1", text: "La relació entre la privacitat i la comoditat", key: 1},

@@ -14,7 +14,9 @@ export default function WelcomeScreen({navigation}) {
   }
 
   const handlePressComença = () => {
-      navigation.navigate('ConsellDiari')
+      navigation.navigate('ConsellNumericament')
+      //navigation.navigate('ConsellDiari')
+      
   };
 
   return (

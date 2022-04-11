@@ -28,15 +28,17 @@ const items = [
 */
 
 
+
 export default function ConsellBox({navigation}) {
     
     const [cardFlipped, flipTheCard] = useState(false);
 
-
+    const isCardFlipped = () => {
+        return cardFlipped;
+    }
 
     const handlePressConsell = () => {
       flipTheCard({cardFlipped: true});
-
     }
 
 

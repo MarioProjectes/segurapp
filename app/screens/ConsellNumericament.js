@@ -5,8 +5,8 @@ import { Dimensions } from 'react-native';
 
 import { useState} from 'react'
 import { TouchableNativeFeedback } from 'react-native';
-import { backgroundColor } from 'react-native/Libraries/Components/View/ReactNativeStyleAttributes';
-import { Alert } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 
 import colors from '../config/colors';
 import Footer from '../shared/footer';
@@ -17,9 +17,30 @@ import Footer from '../shared/footer';
 
 export default function ConsellNumericament({route, navigation}) {
 
-    const {customData} = route.params;
+   const [vectorDone, setState] = useState(readInitialValues);
+
+    
+
+
+    async function readInitialValues(){
+        console.log("Entro a readInitialValues")
+       try{
+           const tempo = await AsyncStorage.getItem('@vectorDone');
+           console.log("vector done", tempo)
+           setState(JSON.parse(tempo))
+        } catch (e){
+            console.log("Error on readInitialValues")
+        }
+    }
+    
+    //const readInitialValues = async () => {  }
+       
+
+   const {customData} = route.params;
+
 
     const handlePressConsell = (id) => {
+        console.log("Entro a handlePressConsell")
         navigation.navigate("Consell", {customData, id})
     }
 
@@ -41,7 +62,7 @@ export default function ConsellNumericament({route, navigation}) {
                     renderItem={({item}) => (
                         <View style={[{flexDirection: 'row'},  item.id === 0 ? {paddingLeft: 50} : null ]}>
                                 <TouchableNativeFeedback onPress={ () =>  handlePressConsell(item.id)}>
-                                    <View style= {[styles.consellSquare, item.done 
+                                    <View style= {[styles.consellSquare, vectorDone[item.id] 
                                         ? {backgroundColor:colors.greenBackgrouncColor} 
                                         : null]  }>
                                         <Text>

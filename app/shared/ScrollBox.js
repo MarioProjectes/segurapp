@@ -6,9 +6,11 @@ import Constants from 'expo-constants'
 import { ScrollView } from 'react-native';
 import { TouchableNativeFeedback } from 'react-native';
 import { useState} from 'react'
+import { useNavigation, useRoute } from '@react-navigation/native';
 
 
 import colors from '../config/colors';
+
 
 const items = [
     {name: "Item 1", text: "La relació entre la privacitat i la comoditat", key: 1},
@@ -18,16 +20,21 @@ const items = [
 
 
 
-export default function ScrollBox({navigation}) {
-    const customData = require('../data/Consells.json')
-    const consell = customData.find((elem) => elem.id===1);
+export default function ScrollBox(props) {
+    const route = useRoute();
+    const navigation = useNavigation();
+    const {customData, id} = route.params;
+
+    const consell = customData.find((elem) => elem.id===id);
     
         
     //const currentId = route.params;    
 
+    const {estat, modifyState} = props
 
     const handlePressEntesos = () => {
-
+        console.log("Entro a handlePress")
+        modifyState(true);
     }
 
 
@@ -97,6 +104,8 @@ const styles = StyleSheet.create({
       },
   
       scrollStyle: {
+        minWidth: '100%',
+        minHeight: '100%',
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: colors.textBackgroundColor,

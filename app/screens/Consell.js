@@ -5,31 +5,74 @@ import { StatusBar } from 'react-native';
 import React from 'react';
 import { Dimensions } from 'react-native'; // Dimensions.get(screen | window) -> same on ios, diff in android
 import { TouchableNativeFeedback } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useState} from 'react'
+
+
+
 
 
 import colors from '../config/colors';
 import Footer from '../shared/footer';
 import ScrollBox from '../shared/ScrollBox';
 
+/*
+
+Aquesta funcionalitat es pot afegir quan s'afegeixi interacció entre consells
 
 
+<TouchableNativeFeedback onPress={handleTemo}>
+  <Text> Canvia consell</Text>
+</TouchableNativeFeedback>
 
-export default function Consell({route, navigation}) {
-  const {customData, id} = route.params;
-
-
-
-  const isConsellDone = () => {
-      var consell = customData.find((item,key) => (
-        item.id === id
-      ))
-      return consell.done
-    }
 
     const handleTemo = () => {
       id === 0 ? navigation.setParams({id: 1})
                : navigation.setParams({id: 0})
     }
+
+*/
+
+
+export default function Consell({route, navigation}) {
+  const {customData, id} = route.params;
+
+  
+  const [vectorDone, setState] = useState(readInitialValues);
+  
+  async function readInitialValues(){
+        console.log("Entro a readInitialValues")
+       try{
+         const tempo = await AsyncStorage.getItem('@vectorDone');
+         console.log("vector done", tempo)
+         setState(JSON.parse(tempo))
+        } catch (e){
+          console.log("Error on readInitialValues")
+        }
+      }
+      
+  const [done, setDone] = useState(false)
+      
+
+  const escriuEstat = () => {
+
+  }
+
+  const modifyState = () => {
+    setDone(true);
+    escriuEstat() // TOCA IMPLEMENTAR AIXÒ
+
+  }
+
+  const isConsellDone = async () => {
+    console.log("Entro a isConsellDone")
+      console.log("IsConsellDone?", done)
+      const altre = JSON.parse(done)
+      altre ? console.log("positiu") : console.log("Negatiu")
+      return altre;
+    }
+
+
 
   return (
     <SafeAreaView style={styles.container}>
@@ -41,7 +84,7 @@ export default function Consell({route, navigation}) {
             translucent={true}
         />
 
-        <View style= {isConsellDone()
+        <View style= {done
             ? [myHeaderStyles.barStyle, {backgroundColor: colors.greenBackgrouncColor}]
             : myHeaderStyles.barStyle }>
             <View style={myHeaderStyles.smallSquare}>
@@ -57,13 +100,10 @@ export default function Consell({route, navigation}) {
         </View>
 
         <View style={{flex: 1, paddingTop: 20}}>
-          <ScrollBox/>
+          <ScrollBox modifyState={modifyState}/>
 
         </View>
 
-        <TouchableNativeFeedback onPress={handleTemo}>
-          <Text> Canvia consell</Text>
-        </TouchableNativeFeedback>
 
 
         <Footer/>

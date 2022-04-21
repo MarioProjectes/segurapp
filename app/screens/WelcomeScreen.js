@@ -5,6 +5,7 @@ import { TouchableOpacity } from 'react-native'; // permet mostrar botons clicka
 import { TouchableNativeFeedback } from 'react-native';
 import { Dimensions } from 'react-native'; // Dimensions.get(screen | window) -> same on ios, diff in android
 import { Alert, TouchableHighlight } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 import colors from '../config/colors'
@@ -12,12 +13,34 @@ const customData = require('../data/Consells.json')
 
 
 export default function WelcomeScreen({navigation}) {
+  
 
-  const handlePressComença = () => {
-      navigation.navigate('ConsellNumericament', {customData})
-      //navigation.navigate('ConsellDiari')
-      
+  const handlePressComença = async () => {
+    AsyncStorage.clear();
+    try{
+      const vectorInitialized = await AsyncStorage.getItem('@vectorInitialized');
+      if(vectorInitialized !== null){ 
+          navigation.navigate('ConsellNumericament', {customData})
+      }
+      else{
+         initializeValues();
+         navigation.navigate('ConsellNumericament', {customData})
+      }
+    } catch(e){
+      console.log("Error when reading vectorInitialized")
+    }      
   };
+
+
+  const initializeValues = () =>{
+    const vectorDone = customData.map( () => false);
+    const vectorRead = vectorDone;
+    AsyncStorage.setItem('@vectorInitialized', JSON.stringify(true))
+    AsyncStorage.setItem('@vectorDone', JSON.stringify(vectorDone))
+    AsyncStorage.setItem('@vectorRead', JSON.stringify(vectorRead))
+  }
+
+
 
   return (
     <SafeAreaView style={styles.container}>

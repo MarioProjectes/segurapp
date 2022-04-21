@@ -19,14 +19,15 @@ const items = [
 
 
 export default function ScrollBox({navigation}) {
+    const customData = require('../data/Consells.json')
+    const consell = customData.find((elem) => elem.id===1);
     
-    const [adviceRead, markRead] = useState(false);
-    
-    
-    
+        
+    //const currentId = route.params;    
+
+
     const handlePressEntesos = () => {
-      markRead({adviceRead: true});
-      navigation.setParams({param : false})
+
     }
 
 
@@ -34,14 +35,14 @@ export default function ScrollBox({navigation}) {
         <View style={{flex: 1, justifyContent: 'center', }}>
             <View style={{flex: 0}}>
                     <Text style={[styles.textTitleStyle, {backgroundColor: colors.mainBackgroundColor}]}>
-                        {items[0].text}
+                        {consell.title}
                     </Text>
                 </View>
                 <View style={{flex: 1, marginBottom: 5, borderRadius: 20, overflow: "hidden"}}>
                     <ScrollView contentContainerStyle={styles.scrollStyle} >
                         <View>
                             <Text style={styles.textBodyStyle}>
-                                {items[1].text}
+                                {consell.text}
                             </Text>
                         </View>
 

@@ -8,13 +8,13 @@ import { Alert, TouchableHighlight } from 'react-native';
 
 
 import colors from '../config/colors'
+const customData = require('../data/Consells.json')
+
 
 export default function WelcomeScreen({navigation}) {
-  const handlePress = () => {
-  }
 
   const handlePressComença = () => {
-      navigation.navigate('ConsellNumericament')
+      navigation.navigate('ConsellNumericament', {customData})
       //navigation.navigate('ConsellDiari')
       
   };

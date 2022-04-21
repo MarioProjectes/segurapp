@@ -12,6 +12,7 @@ import WelcomeScreen from './app/screens/WelcomeScreen';
 import ConsellDiari from './app/screens/ConsellDiari';
 import AppNavigator from './app/app.navigator';
 import ConsellNumericament from './app/screens/ConsellNumericament';
+import Consell from './app/screens/Consell';
 
 
 
@@ -42,7 +43,12 @@ export function registerScreens() {
     'ConsellNumericament',
     () => gestureHandlerRootHOC(ConsellNumericament),
     () => ConsellNumericament
-  )
+  );
+  Navigation.registerComponent(
+    'Consell',
+    () => gestureHandlerRootHOC(Consell),
+    () => Consell
+  );
 
 }
 

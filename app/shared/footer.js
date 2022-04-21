@@ -3,7 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { Dimensions } from 'react-native'; // Dimensions.get(screen | window) -> same on ios, diff in android
 import { TouchableNativeFeedback } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native';
 import { Alert } from 'react-native';
 
 
@@ -11,10 +11,14 @@ import colors from '../config/colors';
 import ConsellBox from './ConsellBox';
 
 export default function Footer({}){
+    const route = useRoute();
+    const {customData} = route.params;
+
     const navigation = useNavigation();
  
     const handlePressArrow = () => {
-        navigation.navigate('ConsellNumericament')
+        navigation.goBack(customData);
+        //navigation.navigate('ConsellNumericament')
     }
   
     const handlePressHomeButton = () => {

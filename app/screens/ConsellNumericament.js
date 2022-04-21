@@ -5,15 +5,24 @@ import { Dimensions } from 'react-native';
 
 import { useState} from 'react'
 import { TouchableNativeFeedback } from 'react-native';
+import { backgroundColor } from 'react-native/Libraries/Components/View/ReactNativeStyleAttributes';
+import { Alert } from 'react-native';
 
 import colors from '../config/colors';
 import Footer from '../shared/footer';
 
 
-const customData = require('../data/Consells.json')
 
 
-export default function ConsellNumericament({navigation}) {
+
+export default function ConsellNumericament({route, navigation}) {
+
+    const {customData} = route.params;
+
+    const handlePressConsell = (id) => {
+        navigation.navigate("Consell", {customData, id})
+    }
+
     return(
         <SafeAreaView style={styles.container}>
             <StatusBar
@@ -31,12 +40,18 @@ export default function ConsellNumericament({navigation}) {
                     data={customData}
                     renderItem={({item}) => (
                         <View style={[{flexDirection: 'row'},  item.id === 0 ? {paddingLeft: 50} : null ]}>
-                            <View style= {styles.consellSquare}>
-                                <Text>
-                                    Consell {item.id}
-                                </Text>
-                            </View>
+                                <TouchableNativeFeedback onPress={ () =>  handlePressConsell(item.id)}>
+                                    <View style= {[styles.consellSquare, item.done 
+                                        ? {backgroundColor:colors.greenBackgrouncColor} 
+                                        : null]  }>
+                                        <Text>
+                                            Consell {item.id}
+                                        </Text>
+                                    </View>
+                                </TouchableNativeFeedback>
+
                         </View>
+
                     )}
                     ItemSeparatorComponent={() =><View style={styles.horizontalLine}/>}
                     ListFooterComponent={() => <View style={{marginRight: 50}}/>}>

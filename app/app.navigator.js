@@ -6,6 +6,7 @@ import { createStackNavigator, TransitionPresets } from '@react-navigation/stack
 import WelcomeScreen from './screens/WelcomeScreen'
 import ConsellDiari from './screens/ConsellDiari'
 import ConsellNumericament from './screens/ConsellNumericament'
+import Consell from './screens/Consell'
 import Header from './shared/header'
 import Footer from './shared/footer';
 
@@ -43,6 +44,11 @@ const AppNavigator = ({navigation}) => (
                 }}
                 name="ConsellNumericament"
                 component={ConsellNumericament}
+            />
+            <Stack.Screen
+                options={{headerShown: false}}
+                name="Consell"
+                component={Consell}
             />
 
             <Stack.Screen

@@ -6,9 +6,7 @@ import { StatusBar } from 'react-native';
 
 import colors from '../config/colors';
 
-export default function Header({navigation, title, param}){
-
-
+export default function Header({route, navigation, title, param}){
 
     return (
         <View style={param ? myHeaderStyles.barStyle : [myHeaderStyles.barStyle, {backgroundColor: colors.greenBackgrouncColor}]}>

@@ -35,41 +35,39 @@ Aquesta funcionalitat es pot afegir quan s'afegeixi interacció entre consells
 
 
 export default function Consell({route, navigation}) {
-  const {customData, id} = route.params;
+  const {customData, vectorDoneParam, id} = route.params;
 
-  const [vectorDone, setVectorDone] = useState( () => ({
-    vectorDone: readInitialValues()
-  }))
-  //const [entesosPressed, setEntesosPressed] = useState(readInitialValue)
+  const [loading, setLoading] = useState(true)
 
-  
-  async function readInitialValues(){
-       try{
-         const tempo = await AsyncStorage.getItem('@vectorDone').then( (value) => {
-           console.log("El vector quan el llegeixo", value)})
-         
-         
-         setVectorDone(JSON.parse(tempo));
-         console.log("El que escric", vectorDone)
-        } catch (e){
-          console.log("Error a  Consell:readInititalValues")
-        }
-      }
-      
-  async function readInitialValue(){
-    try{
-      const tempo = await AsyncStorage.getItem('@vectorDone')
-      const auxVector = JSON.parse(tempo)
-      setEntesosPressed(auxVector[id])
-    } catch (e){
-      console.log("Error a  Consell:readInititalValue")
+  const [vectorDone, setVectorDone] = useState(vectorDoneParam)
+
+  useEffect(() => {
+    //console.log("Parametres", route.params)
+  })
+
+  /*
+  useEffect(() => {
+    if(loading){
+        readInitialValuesSetState()
     }
+  }), [loading, vectorDone]
+  */
+  
+  async function readInitialValuesSetState(){
+    try{
+        const tempo = await AsyncStorage.getItem('@vectorDone');
+        const parsed = JSON.parse(tempo)
+        setVectorDone(parsed)
+        setLoading(false)
+     } catch (e){
+         console.log("Error a  ConsellNumericament:readInititalValues")
+     }
   }
 
-
-  async function writeValues(){
+  async function writeValues(newVector){
+    console.log("Em disposo a escriure", newVector)
     try{
-      AsyncStorage.setItem('@vectorDone', JSON.stringify(vectorDone))
+      AsyncStorage.setItem('@vectorDone', JSON.stringify(newVector))
     }
     catch (e){
       console.log("Error a  Consell:writeValues")
@@ -78,18 +76,16 @@ export default function Consell({route, navigation}) {
 
 
   const escriuEstat = (param) => {
-    console.log("Entro a escriu estat!")
-    console.log("Vector done conté:", vectorDone)
-    const auxVector = vectorDone;    // vectorDone can only be change with setVectorDone
-    auxVector[id] = param;
-    console.log("El vectorAux conte:", auxVector)
-    setVectorDone(auxVector)
+
+    const newVector = [...vectorDone];
+    newVector[id] = param;
+    setVectorDone(newVector)
+    writeValues(newVector)
   }
 
 
   const entesosWasPressed = (param) => {
     escriuEstat(param);
-    //setEntesosPressed(param);
   }
 
 

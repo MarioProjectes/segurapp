@@ -21,6 +21,7 @@ export default function WelcomeScreen({navigation}) {
       console.log("Entro amb valors previs")
       const vectorInitialized = await AsyncStorage.getItem('@vectorInitialized');
       const vector = await AsyncStorage.getItem('@vectorDone');
+      console.log("Valors previs:", vector)
       if(vectorInitialized !== null && vectorInitialized){ 
         navigation.navigate('ConsellNumericament', {customData})
         //navigation.navigate('demo', {customData})

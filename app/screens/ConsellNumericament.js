@@ -22,10 +22,10 @@ export default function ConsellNumericament({route, navigation}) {
 
 
     useEffect(() => {
-        if(loading){
+        console.log("Effect loading", loading)
+        if (loading)
             readInitialValuesSetState()
-        }
-    }), [loading, vectorDone]
+    }), [vectorDone]
 
 
     async function readInitialValuesSetState(){
@@ -39,7 +39,10 @@ export default function ConsellNumericament({route, navigation}) {
         }
     }
 
-
+    const handleGoback = () =>{
+        console.log("Entro a handleGoBack")
+        readInitialValuesSetState()
+    }
 
 
     async function writeValues(newVector){
@@ -56,8 +59,10 @@ export default function ConsellNumericament({route, navigation}) {
 
 
     const handlePressConsell = (id) => {
-        tempo(id)
-        //navigation.navigate("Consell", {customData, id})
+        //tempo(id)
+        const vectorDoneParam = [...vectorDone]
+        setLoading(false)
+        navigation.navigate("Consell", {customData, vectorDoneParam, id})
     }
 
     return(

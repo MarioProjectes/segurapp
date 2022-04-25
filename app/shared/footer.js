@@ -5,6 +5,7 @@ import { TouchableNativeFeedback } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { Alert } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 import colors from '../config/colors';
@@ -18,7 +19,6 @@ export default function Footer({}){
  
     const handlePressArrow = () => {
         navigation.goBack(customData);
-        //navigation.navigate('ConsellNumericament')
     }
   
     const handlePressHomeButton = () => {
@@ -26,9 +26,15 @@ export default function Footer({}){
         
     };
 
-    const handlePressGearButton = () => {
-        Alert.alert("No implementat encara!")
+    async function deleteData(){
+        await AsyncStorage.clear()
+        navigation.navigate('WelcomeScreen')
         
+    }
+    
+    const handlePressGearButton = () => {
+        deleteData()
+        //Alert.alert("No implementat encara!")
     };
     
     return(

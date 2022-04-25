@@ -23,7 +23,6 @@ export default function ConsellDiari({navigation}) {
     const [cardFlipped, flipTheCard] = useState(false);
 
     const isCardFlipped = () => {
-      console.log("La card està flipped:", cardFlipped)
         return cardFlipped;
     }
 

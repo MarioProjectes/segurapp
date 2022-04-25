@@ -30,11 +30,10 @@ export default function ScrollBox(props) {
         
     //const currentId = route.params;    
 
-    const {estat, modifyState} = props
+    const {estat, modifyState: entesosWasPressed} = props
 
     const handlePressEntesos = () => {
-        console.log("Entro a handlePress")
-        modifyState(true);
+        entesosWasPressed(true);
     }
 
 

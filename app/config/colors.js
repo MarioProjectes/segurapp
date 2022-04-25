@@ -4,6 +4,7 @@ export default{
     textBackgroundColor: '#d3e1fb',
     
     barBackgroundColor: '#9BB7EC',
+    
 
     greenBackgrouncColor: '#90DE66',
 

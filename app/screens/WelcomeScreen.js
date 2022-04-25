@@ -16,30 +16,45 @@ export default function WelcomeScreen({navigation}) {
   
 
   const handlePressComença = async () => {
-    AsyncStorage.clear();
+    //resetejaTot();
     try{
+      console.log("Entro amb valors previs")
       const vectorInitialized = await AsyncStorage.getItem('@vectorInitialized');
-      if(vectorInitialized !== null){ 
-          navigation.navigate('ConsellNumericament', {customData})
+      const vector = await AsyncStorage.getItem('@vectorDone');
+      if(vectorInitialized !== null && vectorInitialized){ 
+        navigation.navigate('ConsellNumericament', {customData})
+        //navigation.navigate('demo', {customData})
+
       }
       else{
+        console.log("Genero valors nous")
          initializeValues();
-         navigation.navigate('ConsellNumericament', {customData})
       }
     } catch(e){
-      console.log("Error when reading vectorInitialized")
+      console.log("Error a  WelcomeScree:handlrePressComença")
     }      
   };
 
 
-  const initializeValues = () =>{
+  async function initializeValues (){
     const vectorDone = customData.map( () => false);
     const vectorRead = vectorDone;
-    AsyncStorage.setItem('@vectorInitialized', JSON.stringify(true))
-    AsyncStorage.setItem('@vectorDone', JSON.stringify(vectorDone))
-    AsyncStorage.setItem('@vectorRead', JSON.stringify(vectorRead))
+    await AsyncStorage.setItem('@vectorInitialized', JSON.stringify(true))
+    await AsyncStorage.setItem('@vectorDone', JSON.stringify(vectorDone))
+    await AsyncStorage.setItem('@vectorRead', JSON.stringify(vectorRead))
+
+    navigation.navigate('ConsellNumericament', {customData})
+    //navigation.navigate('demo', {customData})
+
   }
 
+  async function resetejaTot() {
+    //const claus = await AsyncStorage.getAllKeys();
+    //console.log("Claus:", claus)
+    await AsyncStorage.clear();
+    //const altresClaus = await AsyncStorage.getAllKeys();
+    //console.log("Claus:", altresClaus)
+  }
 
 
   return (

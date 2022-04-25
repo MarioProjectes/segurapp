@@ -9,6 +9,7 @@ import ConsellNumericament from './screens/ConsellNumericament'
 import Consell from './screens/Consell'
 import Header from './shared/header'
 import Footer from './shared/footer';
+import demo from './screens/demo'
 
 const Stack = createStackNavigator();
 
@@ -45,6 +46,12 @@ const AppNavigator = ({navigation}) => (
                 name="ConsellNumericament"
                 component={ConsellNumericament}
             />
+            <Stack.Screen
+                options={{headerShown: false}}
+                name="demo"
+                component={demo}
+            />
+
             <Stack.Screen
                 options={{headerShown: false}}
                 name="Consell"

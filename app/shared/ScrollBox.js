@@ -21,8 +21,8 @@ const items = [
 
 
 export default function ScrollBox(props) {
-    const route = useRoute();
     const navigation = useNavigation();
+    const route = useRoute();
     const {customData, id} = route.params;
 
     const consell = customData.find((elem) => elem.id===id);

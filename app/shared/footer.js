@@ -19,9 +19,16 @@ export default function Footer({}){
  
     const handlePressArrow = () => {
         if (route.name === "Consell" ) console.log("Vaig a fer navigate des de Consell")
-        route.name === "Consell" 
-            ? navigation.navigate("ConsellNumericament", {customData})
-            :   navigation.goBack();
+        if(route.name === "Consell"){   //Crappy approach, but it works
+            navigation.reset({
+                index: 0,
+                routes: [{name: "WelcomeScreen", params: {customData}}, {name: "ConsellNumericament", params: {customData}}]
+            })
+        }
+        else{
+            navigation.goBack();
+            
+        }
     }
   
     const handlePressHomeButton = () => {

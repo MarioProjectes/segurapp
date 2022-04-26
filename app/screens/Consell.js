@@ -4,7 +4,7 @@ import { StatusBar } from 'react-native';
 
 import React from 'react';
 import { Dimensions } from 'react-native'; // Dimensions.get(screen | window) -> same on ios, diff in android
-import { TouchableNativeFeedback } from 'react-native';
+import { TouchableNativeFeedback } from 'react-native-gesture-handler';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useState, useEffect} from 'react'
 
@@ -16,53 +16,16 @@ import colors from '../config/colors';
 import Footer from '../shared/footer';
 import ScrollBox from '../shared/ScrollBox';
 
-/*
-
-Aquesta funcionalitat es pot afegir quan s'afegeixi interacció entre consells
-
-
-<TouchableNativeFeedback onPress={handleTemo}>
-  <Text> Canvia consell</Text>
-</TouchableNativeFeedback>
-
-
-    const handleTemo = () => {
-      id === 0 ? navigation.setParams({id: 1})
-               : navigation.setParams({id: 0})
-    }
-
-*/
-
 
 export default function Consell({route, navigation}) {
   const {customData, vectorDoneParam, id} = route.params;
 
-  const [loading, setLoading] = useState(true)
-
   const [vectorDone, setVectorDone] = useState(vectorDoneParam)
 
   useEffect(() => {
-    //console.log("Parametres", route.params)
   })
 
-  /*
-  useEffect(() => {
-    if(loading){
-        readInitialValuesSetState()
-    }
-  }), [loading, vectorDone]
-  */
-  
-  async function readInitialValuesSetState(){
-    try{
-        const tempo = await AsyncStorage.getItem('@vectorDone');
-        const parsed = JSON.parse(tempo)
-        setVectorDone(parsed)
-        setLoading(false)
-     } catch (e){
-         console.log("Error a  ConsellNumericament:readInititalValues")
-     }
-  }
+
 
   async function writeValues(newVector){
     console.log("Em disposo a escriure", newVector)
@@ -102,23 +65,25 @@ export default function Consell({route, navigation}) {
         <View style= {vectorDone[id]                    //This state value modifies styling to green 
             ? [myHeaderStyles.barStyle, {backgroundColor: colors.greenBackgrouncColor}]
             : myHeaderStyles.barStyle }>
-            <View style={myHeaderStyles.smallSquare}>
-                <View style={{flex: 0.5, justifyContent: 'space-around', alignItems: 'center'}}>
-                    <View style={myHeaderStyles.horizontalLine}></View>
-                    <View style={myHeaderStyles.horizontalLine}></View>
-                    <View style={myHeaderStyles.horizontalLine}></View>
-                </View>
-            </View>
+            <TouchableNativeFeedback>
+              <View style={myHeaderStyles.smallSquare}>
+                  <View style={{flex: 0.5, justifyContent: 'space-around', alignItems: 'center'}}>
+                      <View style={myHeaderStyles.horizontalLine}></View>
+                      <View style={myHeaderStyles.horizontalLine}></View>
+                      <View style={myHeaderStyles.horizontalLine}></View>
+                  </View>
+              </View>
+            </TouchableNativeFeedback>
             <View>
                 <Text style={myHeaderStyles.textTitolStyle}> Consell {id}</Text>
             </View>
+            <View style={{width: 40}}/>
         </View>
 
         <View style={{flex: 1, paddingTop: 20}}>
           <ScrollBox modifyState={entesosWasPressed}/>
 
         </View>
-
 
 
         <Footer/>
@@ -148,12 +113,11 @@ const myHeaderStyles = StyleSheet.create({
       backgroundColor: colors.barBackgroundColor,
       height: 80,
       width: '100%',
-      justifyContent: 'center',
+      justifyContent: 'space-around',
       alignItems: 'center',
   },
 
   smallSquare: {
-      position: 'absolute',
       borderWidth: 2,
       borderColor: colors.borderColor,
       borderRadius: 13,
@@ -161,7 +125,6 @@ const myHeaderStyles = StyleSheet.create({
       height: 40,
       aspectRatio: 1 / 1,
       backgroundColor: colors.textBackgroundColor,
-      left: Dimensions.get('window').width <= 360 ? '3%' :  20,
 
       justifyContent: 'center',
       alignItems: 'center',

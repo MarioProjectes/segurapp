@@ -5,7 +5,7 @@ import { Dimensions } from 'react-native';
 
 import { TouchableNativeFeedback } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
+import * as Progress from 'react-native-progress'
 
 import colors from '../config/colors';
 import Footer from '../shared/footer';
@@ -22,9 +22,9 @@ export default function ConsellNumericament({route, navigation}) {
 
 
     useEffect(() => {
-        console.log("Effect loading", loading)
-        if (loading)
+        if (loading){
             readInitialValuesSetState()
+        }
     }), [vectorDone]
 
 
@@ -39,17 +39,11 @@ export default function ConsellNumericament({route, navigation}) {
         }
     }
 
-    const handleGoback = () =>{
-        console.log("Entro a handleGoBack")
-        readInitialValuesSetState()
-    }
-
-
     async function writeValues(newVector){
         await AsyncStorage.setItem('@vectorDone', JSON.stringify(newVector))
-
     }
 
+    //Aquesta funció existia de prova, qui modifica el vector és Consell->Entesos
     async function tempo(id){
         const newVector = [...vectorDone]
         newVector[id] = !newVector[id]
@@ -61,7 +55,7 @@ export default function ConsellNumericament({route, navigation}) {
     const handlePressConsell = (id) => {
         //tempo(id)
         const vectorDoneParam = [...vectorDone]
-        setLoading(false)
+        //setLoading(true)
         navigation.navigate("Consell", {customData, vectorDoneParam, id})
     }
 
@@ -77,9 +71,24 @@ export default function ConsellNumericament({route, navigation}) {
         <View style={{flex: 1, paddingBottom: '12%'}}>
             {loading 
                 ? 
-                    <View style={{flex: 1}}>
-                        <Text>Carregant! </Text>
-                    </View>
+                <FlatList 
+                    keyExtractor={(item) => item.id}
+                    contentContainerStyle={{justifyContent: 'center', alignItems: 'center'}}
+                    horizontal={true}
+                    data={customData}
+                    renderItem={({item}) => (
+                        <View style={[{flexDirection: 'row'},  item.id === 0 ? {paddingLeft: 50} : null ]}>
+                            <TouchableNativeFeedback onPress={ () =>  handlePressConsell(item.id)}>
+                                <View style= {styles.consellSquare}>
+                                        <Progress.CircleSnail size={40} thickness={2} 
+                                            color={colors.textBlack} spinDuration={2000} strokeCap={'square'} />
+                                </View>
+                            </TouchableNativeFeedback>
+                        </View>
+                    )}
+                    ItemSeparatorComponent={() =><View style={styles.horizontalLine}/>}
+                    ListFooterComponent={() => <View style={{marginRight: 50}}/>}>
+                </FlatList>
                 : 
                 <FlatList 
                     keyExtractor={(item) => item.id}
@@ -95,6 +104,7 @@ export default function ConsellNumericament({route, navigation}) {
                                     <Text>
                                         Consell {item.id}
                                     </Text>
+                                   
                                 </View>
                             </TouchableNativeFeedback>
                         </View>
@@ -109,19 +119,6 @@ export default function ConsellNumericament({route, navigation}) {
     </SafeAreaView>
     )
 }
-
-
-
-
-
-
-
-/*
-
-
-
-*/
-
 
 
 

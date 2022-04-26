@@ -1,23 +1,15 @@
 import Constants from 'expo-constants'
 import { StyleSheet, SafeAreaView, Platform, Text, View, FlatList } from 'react-native';
-import { StatusBar } from 'react-native';
-import { Dimensions } from 'react-native';
-
-import { TouchableNativeFeedback } from 'react-native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import uuid from 'react-native-uuid';
-
+import { TouchableNativeFeedback } from 'react-native-gesture-handler';
 
 import colors from '../config/colors';
 import Footer from '../shared/footer';
-import { useState, useEffect} from 'react'
-import { ScrollView } from 'react-native-gesture-handler';
 
 
 
 
 
-export default function Demo({route, navigation}) {
+export default function AccesRapid({route, navigation}) {
 
    
 

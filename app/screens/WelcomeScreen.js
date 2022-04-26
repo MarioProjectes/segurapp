@@ -1,10 +1,8 @@
 
 import { StatusBar } from 'react-native';
-import { StyleSheet, Text, TouchableWithoutFeedback, Image, View, SafeAreaView, Platform } from 'react-native';
-import { TouchableOpacity } from 'react-native'; // permet mostrar botons clickats!
+import { StyleSheet, Text,  View, SafeAreaView, Platform } from 'react-native';
 import { TouchableNativeFeedback } from 'react-native';
 import { Dimensions } from 'react-native'; // Dimensions.get(screen | window) -> same on ios, diff in android
-import { Alert, TouchableHighlight } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
@@ -50,11 +48,7 @@ export default function WelcomeScreen({navigation}) {
   }
 
   async function resetejaTot() {
-    //const claus = await AsyncStorage.getAllKeys();
-    //console.log("Claus:", claus)
     await AsyncStorage.clear();
-    //const altresClaus = await AsyncStorage.getAllKeys();
-    //console.log("Claus:", altresClaus)
   }
 
 

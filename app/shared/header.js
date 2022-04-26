@@ -1,32 +1,64 @@
+import { useNavigation, useRoute } from '@react-navigation/native';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { Dimensions } from 'react-native'; // Dimensions.get(screen | window) -> same on ios, diff in android
 import { StatusBar } from 'react-native';
-
+import { TouchableNativeFeedback } from 'react-native-gesture-handler';
+import Icon from 'react-native-vector-icons/FontAwesome';
+import FontAwesome, { Icons } from 'react-native-fontawesome';
 
 import colors from '../config/colors';
 
-export default function Header({route, navigation, title, param}){
+export default function Header({title, param}){
+
+    const navigation = useNavigation();
+    const route = useRoute();
+    const {customData, id} = route.params;
+
+    const handlePressMenu = () => {
+        console.log("navigation", navigation)
+        navigation.navigate("AccesRapid", {customData})
+    }
+
 
     return (
-        <View style={param ? myHeaderStyles.barStyle : [myHeaderStyles.barStyle, {backgroundColor: colors.greenBackgrouncColor}]}>
-            <View style={myHeaderStyles.smallSquare}>
-                <View style={{flex: 0.5, justifyContent: 'space-around', alignItems: 'center'}}>
-                    <View style={myHeaderStyles.horizontalLine}></View>
-                    <View style={myHeaderStyles.horizontalLine}></View>
-                    <View style={myHeaderStyles.horizontalLine}></View>
-                </View>
-                
-            </View>
+        <View style={param 
+                ? myHeaderStyles.barStyle 
+                : [myHeaderStyles.barStyle, {backgroundColor: colors.greenBackgrouncColor}]}>
+            <TouchableNativeFeedback onPress={handlePressMenu}>
+                {route.name==="AccesRapid"
+                    ?
+                    <View style={myHeaderStyles.smallSquare}>
+                        <View style={{flex: 1, justifyContent: 'center', alignItems: 'flex-end'}}>
+                            <FontAwesome>{Icons.chevronLeft}</FontAwesome>
+                        </View>
+                    </View>
+                    :
+                    <View style={myHeaderStyles.smallSquare}>
+                        <View style={{flex: 0.5, justifyContent: 'space-around', alignItems: 'center'}}>
+                            <View style={myHeaderStyles.horizontalLine}></View>
+                            <View style={myHeaderStyles.horizontalLine}></View>
+                            <View style={myHeaderStyles.horizontalLine}></View>
+                        </View>
+                    </View>
+
+                }
+            </TouchableNativeFeedback>
+
             <View>
                 <Text style={myHeaderStyles.textTitolStyle}> {title}</Text>
             </View>
+            <View style={{width:40} /*//Invisible view to maintain 3 component logic*/}/>  
         </View>
     )
 }
 
+/*
+
+   
+*/
+
 const myHeaderStyles = StyleSheet.create({
-      
     barStyle: {
         flex: 0,
         flexDirection: 'row',
@@ -34,12 +66,12 @@ const myHeaderStyles = StyleSheet.create({
         marginTop: StatusBar.currentHeight,
         height: 80,
         width: '100%',
-        justifyContent: 'center',
+        justifyContent: 'space-around',
         alignItems: 'center',
     },
 
+    
     smallSquare: {
-        position: 'absolute',
         borderWidth: 2,
         borderColor: colors.borderColor,
         borderRadius: 13,
@@ -47,7 +79,6 @@ const myHeaderStyles = StyleSheet.create({
         height: 40,
         aspectRatio: 1 / 1,
         backgroundColor: colors.textBackgroundColor,
-        left: Dimensions.get('window').width <= 360 ? '3%' :  20,
 
         justifyContent: 'center',
         alignItems: 'center',
@@ -58,6 +89,22 @@ const myHeaderStyles = StyleSheet.create({
         height: 2,
         borderWidth: 1,
         borderRadius: 1,
+    },
+
+    diagonalLine: {
+        width: 30,
+        height: 1,
+        borderWidth: 1,
+        borderRadius: 1,
+        transform: [{rotate: '135deg'}],
+    },
+
+    diagonalLineInversed: {
+        width: 30,
+        height: 1,
+        borderWidth: 1,
+        borderRadius: 1,
+        transform: [{rotate: '45deg'}],
     },
 
     textTitolStyle: {

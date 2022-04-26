@@ -8,7 +8,9 @@ import ConsellDiari from './screens/ConsellDiari'
 import ConsellNumericament from './screens/ConsellNumericament'
 import Consell from './screens/Consell'
 import Header from './shared/header'
-import Footer from './shared/footer';
+import Footer from './shared/footer'
+import AccesRapid from './screens/AccesRapid'
+
 import demo from './screens/demo'
 
 const Stack = createStackNavigator();
@@ -40,7 +42,7 @@ const AppNavigator = ({navigation}) => (
                     header: () =>
                         <Header
                             navigation={navigation}
-                            title="Consells"
+                            title="Consells "
                             param= {true}/>,
                 }}
                 name="ConsellNumericament"
@@ -50,6 +52,17 @@ const AppNavigator = ({navigation}) => (
                 options={{headerShown: false}}
                 name="demo"
                 component={demo}
+            />
+             <Stack.Screen
+                options={{
+                    header: () =>
+                        <Header
+                            navigation={navigation}
+                            title="Accés ràpid "
+                            param= {true}/>,
+                }}
+                name="AccesRapid"
+                component={AccesRapid}
             />
 
             <Stack.Screen

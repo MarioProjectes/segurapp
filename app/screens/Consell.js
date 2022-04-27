@@ -51,6 +51,13 @@ export default function Consell({route, navigation}) {
     escriuEstat(param);
   }
 
+  const handlePressMenu = () => {
+    route.name==="AccesRapid" 
+        ? navigation.goBack()
+        : navigation.navigate("AccesRapid", {customData})
+    
+}
+
 
   return (
     <SafeAreaView style={styles.container}>
@@ -65,7 +72,7 @@ export default function Consell({route, navigation}) {
         <View style= {vectorDone[id]                    //This state value modifies styling to green 
             ? [myHeaderStyles.barStyle, {backgroundColor: colors.greenBackgrouncColor}]
             : myHeaderStyles.barStyle }>
-            <TouchableNativeFeedback>
+            <TouchableNativeFeedback onPress={handlePressMenu}>
               <View style={myHeaderStyles.smallSquare}>
                   <View style={{flex: 0.5, justifyContent: 'space-around', alignItems: 'center'}}>
                       <View style={myHeaderStyles.horizontalLine}></View>

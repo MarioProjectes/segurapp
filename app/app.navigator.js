@@ -10,6 +10,8 @@ import Consell from './screens/Consell'
 import Header from './shared/header'
 import Footer from './shared/footer'
 import AccesRapid from './screens/AccesRapid'
+import Categories from './screens/Categories'
+import ConsellsFiltrats from './screens/ConsellsFiltrats'
 
 import demo from './screens/demo'
 
@@ -53,7 +55,7 @@ const AppNavigator = ({navigation}) => (
                 name="demo"
                 component={demo}
             />
-             <Stack.Screen
+            <Stack.Screen
                 options={{
                     header: () =>
                         <Header
@@ -64,13 +66,27 @@ const AppNavigator = ({navigation}) => (
                 name="AccesRapid"
                 component={AccesRapid}
             />
-
+            <Stack.Screen
+                options={{
+                    header: () =>
+                        <Header
+                            navigation={navigation}
+                            title="Categories"
+                            param= {true}/>,
+                }}
+                name="Categories"
+                component={Categories}
+            />
             <Stack.Screen
                 options={{headerShown: false}}
                 name="Consell"
                 component={Consell}
             />
-
+             <Stack.Screen
+                options={{headerShown: false}}
+                name="ConsellsFiltrats"
+                component={ConsellsFiltrats}
+            />
             <Stack.Screen
                 name="Footer"
                 component={Footer}

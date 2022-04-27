@@ -1,22 +1,30 @@
 [
     {
-        "nom": "Numéricament",
+        "nom": "Consell del dia",
         "id": 0
     },
     {
-        "nom": "Multinivell",
+        "nom": "Consells ordenats:",
         "id": 1
     },
     {
-        "nom": "Per temàtiques",
+        "nom": "Numéricament",
         "id": 2
     },
     {
-        "nom": "Per temps",
+        "nom": "Multinivell",
         "id": 3
     },
     {
-        "nom": "Només incomplerts",
+        "nom": "Per temàtiques",
         "id": 4
+    },
+    {
+        "nom": "Per temps",
+        "id": 5
+    },
+    {
+        "nom": "Només incomplerts",
+        "id": 6
     }
 ]

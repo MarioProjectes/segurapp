@@ -1,23 +1,30 @@
 [
     {
-        "nom": "Conceptes"
+        "nom": "Conceptes",
+        "id": 0
     },
     {
-        "nom": "Gestio de dades"
+        "nom": "Gestio de dades",
+        "id": 1
     },
     {
-        "nom": "mentalitat"
+        "nom": "mentalitat",
+        "id": 2
     },
     {
-        "nom": "mentalitat"
+        "nom": "mentalitat",
+        "id": 3
     },
     {
-        "nom": "mentalitat"
+        "nom": "mentalitat",
+        "id": 4
     },
     {
-        "nom": "mentalitat"
+        "nom": "mentalitat",
+        "id": 5
     },
     {
-        "nom": "mentalitat"
+        "nom": "mentalitat",
+        "id": 6
     }
 ]

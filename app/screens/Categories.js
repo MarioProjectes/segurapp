@@ -8,17 +8,17 @@ import { Dimensions } from 'react-native'; // Dimensions.get(screen | window) ->
 import { text } from '@fortawesome/fontawesome-svg-core';
 
 
-const itemsMenu = require('../data/ItemsMenu.json')
+const itemsMenu = require('../data/Categories.json')
 
 
 
-export default function AccesRapid({route, navigation}) {
+export default function Categories({route, navigation}) {
 
     const {customData} = route.params;
 
-    const handlePressItemMenu = (nom) => {
-        if(nom==="Numéricament") navigation.navigate("ConsellNumericament", {customData})
-        else if (nom==="Per temàtiques") navigation.navigate("Categories", {customData})
+    const handlePressItemCategories = (nom) => {
+        if(nom==="Conceptes") navigation.navigate("ConsellsFiltrats", {customData, nom})
+        if(nom==="Gestio de dades") navigation.navigate("ConsellsFiltrats", {customData, nom})
         console.log("eco!")
     }
     
@@ -32,20 +32,12 @@ export default function AccesRapid({route, navigation}) {
                     contentContainerStyle={{justifyContent: 'flex-start', alignItems: 'flex-start'}}
                     data={itemsMenu}
                     renderItem={({item}) => (
-                        <View style={item.id === 0 ? {paddingTop: 20} : null }>
-                        {item.id === 1 
-                            ?
-                            <View>
-                                <Text style={styles.textStyle}>{item.nom}</Text>
-                            </View>
-                            :
-                            <TouchableNativeFeedback onPress={() => handlePressItemMenu(item.nom)}>
-                                <View style= {item.id===1 ? styles.textStyle : styles.itemMenu}>
+                        <View style={item.id === 0 ? {marginTop: 40} : null }>
+                            <TouchableNativeFeedback onPress={() => handlePressItemCategories(item.nom)}>
+                                <View style= {styles.itemMenu}>
                                       <Text style={styles.textStyle}>{item.nom}</Text>
                                 </View>
                             </TouchableNativeFeedback>
-                        }
-                            
                         </View>
                     )}
                     ItemSeparatorComponent={() =><View style={{marginVertical: 15}}/>}
@@ -74,9 +66,7 @@ const styles = StyleSheet.create({
 
 
     itemMenu: {
-        backgroundColor: colors.textBackgroundColor,
-        borderColor: colors.borderColor,
-        borderWidth: 1,
+        backgroundColor: colors.barBackgroundColor,
         borderRadius: 20,
         alignItems: 'center',
         justifyContent: 'center',

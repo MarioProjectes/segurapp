@@ -15,10 +15,11 @@ import { useState, useEffect} from 'react'
 
 
 
-export default function ConsellNumericament({route, navigation}) {
+export default function ConsellsFiltrats({route, navigation}) {
     const {customData} = route.params;
     const [loading, setLoading] = useState(true)
     const [vectorDone, setVectorDone] = useState([false, false, false])
+    const filteredData = customData.filter((item) => item.category==="GestioDades")
 
 
     useEffect(() => {
@@ -29,6 +30,7 @@ export default function ConsellNumericament({route, navigation}) {
 
 
     async function readInitialValuesSetState(){
+        console.log(customData)
        try{
            const tempo = await AsyncStorage.getItem('@vectorDone');
            const parsed = JSON.parse(tempo)
@@ -72,12 +74,12 @@ export default function ConsellNumericament({route, navigation}) {
             {loading 
                 ? 
                 <FlatList 
-                    keyExtractor={(item, index) => item.id}
+                    keyExtractor={(item) => item.id}
                     contentContainerStyle={{justifyContent: 'center', alignItems: 'center'}}
                     horizontal={true}
-                    data={customData}
+                    data={filteredData}
                     renderItem={({item}) => (
-                        <View style={[{flexDirection: 'row'},  index === 0 ? {paddingLeft: 50} : null ]}>
+                        <View style={[{flexDirection: 'row'},  item.id === 0 ? {paddingLeft: 50} : null ]}>
                             <TouchableNativeFeedback onPress={ () =>  handlePressConsell(item.id)}>
                                 <View style= {styles.consellSquare}>
                                         <Progress.CircleSnail size={40} thickness={2} 
@@ -91,10 +93,10 @@ export default function ConsellNumericament({route, navigation}) {
                 </FlatList>
                 : 
                 <FlatList 
-                    keyExtractor={(item, index) => item.id}
+                    keyExtractor={(item) => item.id}
                     contentContainerStyle={{justifyContent: 'center', alignItems: 'center'}}
                     horizontal={true}
-                    data={customData}
+                    data={filteredData}
                     renderItem={({item, index}) => (
                         <View style={[{flexDirection: 'row'},  index === 0 ? {paddingLeft: 50} : null ]}>
                             <TouchableNativeFeedback onPress={ () =>  handlePressConsell(item.id)}>

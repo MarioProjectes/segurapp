@@ -1,0 +1,22 @@
+[
+    {
+        "nom": "Numéricament",
+        "id": 0
+    },
+    {
+        "nom": "Multinivell",
+        "id": 1
+    },
+    {
+        "nom": "Per temàtiques",
+        "id": 2
+    },
+    {
+        "nom": "Per temps",
+        "id": 3
+    },
+    {
+        "nom": "Només incomplerts",
+        "id": 4
+    }
+]

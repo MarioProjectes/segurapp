@@ -1,11 +1,15 @@
 import { useNavigation, useRoute } from '@react-navigation/native';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { Dimensions } from 'react-native'; // Dimensions.get(screen | window) -> same on ios, diff in android
 import { StatusBar } from 'react-native';
 import { TouchableNativeFeedback } from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import FontAwesome, { Icons } from 'react-native-fontawesome';
+
+import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
+import { faXmark} from "@fortawesome/free-solid-svg-icons";
+
+
+
 
 import colors from '../config/colors';
 
@@ -16,8 +20,10 @@ export default function Header({title, param}){
     const {customData, id} = route.params;
 
     const handlePressMenu = () => {
-        console.log("navigation", navigation)
-        navigation.navigate("AccesRapid", {customData})
+        route.name==="AccesRapid" 
+            ? navigation.goBack()
+            : navigation.navigate("AccesRapid", {customData})
+        
     }
 
 
@@ -30,7 +36,7 @@ export default function Header({title, param}){
                     ?
                     <View style={myHeaderStyles.smallSquare}>
                         <View style={{flex: 1, justifyContent: 'center', alignItems: 'flex-end'}}>
-                            <FontAwesome>{Icons.chevronLeft}</FontAwesome>
+                          <FontAwesomeIcon onPress={handlePressMenu} icon={faXmark} size={20} />
                         </View>
                     </View>
                     :

@@ -10,9 +10,12 @@
     "eject": "expo eject"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.1.1",
+    "@fortawesome/free-brands-svg-icons": "^6.1.1",
     "@fortawesome/free-regular-svg-icons": "^6.1.1",
     "@fortawesome/free-solid-svg-icons": "^6.1.1",
-    "@fortawesome/react-fontawesome": "latest",
+    "@fortawesome/react-fontawesome": "^0.1.18",
+    "@fortawesome/react-native-fontawesome": "^0.2.7",
     "@react-native-async-storage/async-storage": "~1.15.0",
     "@react-native-community/masked-view": "^0.1.11",
     "@react-native-masked-view/masked-view": "0.2.6",
@@ -39,7 +42,7 @@
     "react-native-vector-icons": "^9.1.0",
     "react-native-web": "0.17.1",
     "stack-navigator": "^0.0.0",
-    "undefined": "react-native-vector-icons/FontAwesome5"
+    "undefined": "https://github.com/FortAwesome/react-fontawesome"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9"

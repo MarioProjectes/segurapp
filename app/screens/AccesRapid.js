@@ -17,9 +17,21 @@ export default function AccesRapid({route, navigation}) {
     const {customData} = route.params;
 
     const handlePressItemMenu = (nom) => {
-        if(nom==="Numéricament") navigation.navigate("ConsellNumericament", {customData})
-        else if (nom==="Per temàtiques") navigation.navigate("Categories", {customData})
-        console.log("eco!")
+        if(nom==="Numéricament"){
+            const category = "all"
+            navigation.navigate("ConsellsFiltrats", {customData, category})
+        }
+        else if (nom==="Per temàtiques"){
+            navigation.navigate("Categories", {customData})
+        } 
+        else if (nom ==="Només incomplerts"){
+            const category = "Només incomplerts"
+            navigation.navigate("ConsellsFiltrats", {customData, category})
+        }
+        else if (nom ==="Per temps"){
+            const category = "Per temps"
+            navigation.navigate("ConsellsFiltrats", {customData, category})
+        }
     }
     
    

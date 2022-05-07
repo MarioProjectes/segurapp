@@ -13,8 +13,8 @@
         "id": 1,
         "read": null,
         "done": null,
-        "time": 15,
-        "category": "GestioDades",
+        "time": 20,
+        "category": "Gestió de dades",
         "title": "Posa contrasenya al mòbil",
         "text": "Un mòbil sense cap mètode d'autentificació és vulnerable davant de qualsevol persona que estigui en propietat del dispositiu. En cas de pèrdua, robatori o retenció (per exemple en una detenció) no hi hauria cap forma de protegir la informació que contingués."
     },
@@ -22,7 +22,7 @@
         "id": 2,
         "read": true,
         "done": null,
-        "time": 15,
+        "time": 30,
         "category": "mentalitat",
         "title": "La relació entre la privacitat i la comoditat",
         "text": null
@@ -31,7 +31,7 @@
         "id": 3,
         "read": null,
         "done": null,
-        "time": 15,
+        "time": 25,
         "category": "GestioDades",
         "title": "La relació entre la privacitat i la comoditat",
         "text": null

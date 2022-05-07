@@ -13,7 +13,7 @@ import ConsellBox from './ConsellBox';
 
 export default function Footer({}){
     const route = useRoute();
-    const {customData} = route.params;
+    const {customData, category} = route.params;
 
     const navigation = useNavigation();
  
@@ -22,7 +22,7 @@ export default function Footer({}){
         if(route.name === "Consell"){   //Crappy approach, but it works
             navigation.reset({
                 index: 0,
-                routes: [{name: "WelcomeScreen", params: {customData}}, {name: "ConsellNumericament", params: {customData}}]
+                routes: [{name: "WelcomeScreen", params: {customData}}, {name: "ConsellsFiltrats", params: {customData, category}}]
             })
         }
         else{

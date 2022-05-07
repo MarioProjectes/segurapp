@@ -18,7 +18,7 @@ import ScrollBox from '../shared/ScrollBox';
 
 
 export default function Consell({route, navigation}) {
-  const {customData, vectorDoneParam, id} = route.params;
+  const {customData, vectorDoneParam, id, category} = route.params;
 
   const [vectorDone, setVectorDone] = useState(vectorDoneParam)
 
@@ -56,7 +56,7 @@ export default function Consell({route, navigation}) {
         ? navigation.goBack()
         : navigation.navigate("AccesRapid", {customData})
     
-}
+  }
 
 
   return (

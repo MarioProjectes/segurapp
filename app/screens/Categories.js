@@ -16,10 +16,10 @@ export default function Categories({route, navigation}) {
 
     const {customData} = route.params;
 
-    const handlePressItemCategories = (nom) => {
-        if(nom==="Conceptes") navigation.navigate("ConsellsFiltrats", {customData, nom})
-        if(nom==="Gestio de dades") navigation.navigate("ConsellsFiltrats", {customData, nom})
-        console.log("eco!")
+    const handlePressItemCategories = (category) => {
+        console.log(category)
+        navigation.navigate("ConsellsFiltrats", {customData, category})
+
     }
     
    
@@ -31,8 +31,8 @@ export default function Categories({route, navigation}) {
                     keyExtractor={(item) => item.id}
                     contentContainerStyle={{justifyContent: 'flex-start', alignItems: 'flex-start'}}
                     data={itemsMenu}
-                    renderItem={({item}) => (
-                        <View style={item.id === 0 ? {marginTop: 40} : null }>
+                    renderItem={({item, index}) => (
+                        <View style={index === 0 ? {marginTop: 40} : null }>
                             <TouchableNativeFeedback onPress={() => handlePressItemCategories(item.nom)}>
                                 <View style= {styles.itemMenu}>
                                       <Text style={styles.textStyle}>{item.nom}</Text>
@@ -68,14 +68,14 @@ const styles = StyleSheet.create({
     itemMenu: {
         backgroundColor: colors.barBackgroundColor,
         borderRadius: 20,
-        alignItems: 'center',
-        justifyContent: 'center',
+        alignItems:  'center',
         width: 0.8*Dimensions.get('screen').width,
         paddingVertical: 15,
+        
     },
 
     textStyle: {
-        fontSize: 24,
+        fontSize: 22,
     }
 
 

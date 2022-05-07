@@ -21,8 +21,11 @@ export default function WelcomeScreen({navigation}) {
       const vector = await AsyncStorage.getItem('@vectorDone');
       console.log("Valors previs:", vector)
       if(vectorInitialized !== null && vectorInitialized){ 
-        navigation.navigate('ConsellNumericament', {customData})
-        //navigation.navigate('demo', {customData})
+        //navigation.navigate('ConsellNumericament', {customData})
+        
+        const category = "all"
+        navigation.navigate('ConsellsFiltrats', {customData, category})
+
 
       }
       else{
@@ -42,8 +45,9 @@ export default function WelcomeScreen({navigation}) {
     await AsyncStorage.setItem('@vectorDone', JSON.stringify(vectorDone))
     await AsyncStorage.setItem('@vectorRead', JSON.stringify(vectorRead))
 
-    navigation.navigate('ConsellNumericament', {customData})
-    //navigation.navigate('demo', {customData})
+    //navigation.navigate('ConsellNumericament', {customData})
+    const category = "all"
+    navigation.navigate('ConsellsFiltrats', {customData, category})
 
   }
 

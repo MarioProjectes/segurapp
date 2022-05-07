@@ -72,11 +72,11 @@ export default function ConsellNumericament({route, navigation}) {
             {loading 
                 ? 
                 <FlatList 
-                    keyExtractor={(item, index) => item.id}
+                    keyExtractor={(item) => item.id}
                     contentContainerStyle={{justifyContent: 'center', alignItems: 'center'}}
                     horizontal={true}
                     data={customData}
-                    renderItem={({item}) => (
+                    renderItem={({item, index}) => (
                         <View style={[{flexDirection: 'row'},  index === 0 ? {paddingLeft: 50} : null ]}>
                             <TouchableNativeFeedback onPress={ () =>  handlePressConsell(item.id)}>
                                 <View style= {styles.consellSquare}>
@@ -91,7 +91,7 @@ export default function ConsellNumericament({route, navigation}) {
                 </FlatList>
                 : 
                 <FlatList 
-                    keyExtractor={(item, index) => item.id}
+                    keyExtractor={(item) => item.id}
                     contentContainerStyle={{justifyContent: 'center', alignItems: 'center'}}
                     horizontal={true}
                     data={customData}

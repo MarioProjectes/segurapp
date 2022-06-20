@@ -41,7 +41,6 @@ export default function ConsellsFiltrats({route, navigation}) {
 
 
     async function readInitialValuesSetState(){
-        //console.log(customData)
        try{
            const tempo = await AsyncStorage.getItem('@vectorDone');
            const parsed = JSON.parse(tempo)

@@ -4,7 +4,7 @@
         "id": 0
     },
     {
-        "nom": "Gestió de dades",
+        "nom": "Mètodes d'autentificació",
         "id": 1
     },
     {
@@ -12,19 +12,11 @@
         "id": 2
     },
     {
-        "nom": "SO en dispositius mòbils",
+        "nom": "Aplicacions i alternatives",
         "id": 3
     },
     {
-        "nom": "SO en ordinadors",
+        "nom": "Gestió de dades",
         "id": 4
-    },
-    {
-        "nom": "mentalitat",
-        "id": 5
-    },
-    {
-        "nom": "mentalitat",
-        "id": 6
     }
 ]

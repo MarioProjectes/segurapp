@@ -20,7 +20,6 @@ export default function Header({title, param}){
     const {customData, id} = route.params;
 
     const handlePressMenu = () => {
-        console.log("Entro al butó de menu des de: ", route.name)
         route.name==="AccesRapid" 
             ? navigation.goBack()
             : navigation.navigate("AccesRapid", {customData})

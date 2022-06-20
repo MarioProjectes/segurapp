@@ -28,7 +28,6 @@ export default function Consell({route, navigation}) {
 
 
   async function writeValues(newVector){
-    console.log("Em disposo a escriure", newVector)
     try{
       AsyncStorage.setItem('@vectorDone', JSON.stringify(newVector))
     }

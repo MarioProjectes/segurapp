@@ -44,7 +44,7 @@ export default function AccesRapid({route, navigation}) {
                     contentContainerStyle={{justifyContent: 'flex-start', alignItems: 'flex-start'}}
                     data={itemsMenu}
                     renderItem={({item}) => (
-                        <View style={item.id === 0 ? {paddingTop: 20} : null }>
+                        <View style={item.id === 1 ? {paddingTop: 30} : null }>
                         {item.id === 1 
                             ?
                             <View>

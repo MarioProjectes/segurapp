@@ -1,3 +1,6 @@
+/*
+    Aquest arxiu conté la paleta de colors per a facilitar la moficicació d'aquests.
+*/
 export default{
     mainBackgroundColor: '#c2d2ed',
 

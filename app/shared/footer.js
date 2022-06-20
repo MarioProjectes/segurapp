@@ -18,7 +18,6 @@ export default function Footer({}){
     const navigation = useNavigation();
  
     const handlePressArrow = () => {
-        if (route.name === "Consell" ) console.log("Vaig a fer navigate des de Consell")
         if(route.name === "Consell"){   //Crappy approach, but it works
             navigation.reset({
                 index: 0,
@@ -42,9 +41,8 @@ export default function Footer({}){
         
     }
     
-    const handlePressGearButton = () => {
-        deleteData()
-        //Alert.alert("No implementat encara!")
+    const handlePressTrashButton = () => {
+        Alert.alert("Borrar progrés","Vols esborrar el progrés?",[{text:"No"},{text:"Sí", onPress:deleteData}], {cancelable: true} )
     };
     
     return(
@@ -60,9 +58,9 @@ export default function Footer({}){
 
                 </View>
             </TouchableNativeFeedback>
-            <TouchableNativeFeedback onPress={handlePressGearButton}>
+            <TouchableNativeFeedback onPress={handlePressTrashButton}>
                 <View style={styles.gear}>
-                    <Icon style={{fontSize: 40}}name="gear"></Icon>
+                    <Icon style={{fontSize: 40}}name="trash"></Icon>
 
                 </View>
             </TouchableNativeFeedback>

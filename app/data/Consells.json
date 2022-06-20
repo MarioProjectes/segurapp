@@ -1,48 +1,179 @@
 [
     {
+        "title": "La decisió de la privacitat",
         "id": 0,
-        "title": "La relació entre la privacitat i la comoditat",
-        "text": "Text del consell 1",
-        "read": null,
-        "done": null,
+        "text": "Per desgracia avui en dia voler exercir el dret a la privacitat en entorns digitals requereix d’un esforç per part dels usuaris.\n \nAquesta aplicació ofereix eines als seus usuaris per tal d’exercir aquest dret en dos formats\n. \nEl primer és presentant conceptes per oferir un marc mental alternatiu a l’usuari. Aquests, tot i que no es puguin materialitzar directament són els de major importància ja que són atemporals i amb sort motivaran als usuaris a cercar recursos propis per a millorar la seva privacitat.\n \nEl segon consisteix en proveir accions directes o oferir eines concretes (per exemple aplicacions).\n \nTot i que a primera vista semblin més útils aquestes directives són les més propenses a resultar obsoletes i és per això que es demana als usuaris que procurin estar al dia respecte aquestes tecnologies en constant evolució.",
+        "time": 2.1,
+        "rellevancia": 5,
+        "category": "Conceptes"
+    },
+    {
+        "title": "Protegeix el teu mòbil",
+        "id": 1,
+        "text": "En cas que el teu telèfon mòbil no tingui cap mètode d’autentificació que el protegeixi recomanem introduir un immediatament.\n \nExisteixen diversos mètodes d’autentificació per protegir els mòbils: patrons, pins, contrasenyes, biometria...\n \nEn aquest consell recomanem activar qualsevol mètode si no hi ha cap present, ja que un dispositiu sense autentificació és vulnerable davant de qualsevol persona que estigui en propietat d’aquest. En cas de pèrdua, robatori o retenció (per exemple en una detenció) no hi hauria cap forma de protegir la informació que contingués.\n \nEn el consell número 8 aprofundim en aquesta temàtica.",
         "time": 10,
         "rellevancia": 10,
-        "category": "mentalitat"
+        "category": "Mètodes d'autentificació"
     },
     {
-        "id": 1,
-        "read": null,
-        "done": null,
-        "time": 20,
-        "category": "Gestió de dades",
-        "title": "Posa contrasenya al mòbil",
-        "text": "Un mòbil sense cap mètode d'autentificació és vulnerable davant de qualsevol persona que estigui en propietat del dispositiu. En cas de pèrdua, robatori o retenció (per exemple en una detenció) no hi hauria cap forma de protegir la informació que contingués."
-    },
-    {
+        "title": "Canvia el teu proveïdor de correu",
         "id": 2,
-        "read": true,
-        "done": null,
-        "time": 30,
-        "category": "mentalitat",
-        "title": "La relació entre la privacitat i la comoditat",
-        "text": null
+        "text": "En cas que el teu proveïdor de correu electrònic sigui Gmail (o qualsevol altre que no tingui una clara política de privacitat) recomanem fer el canvi a un proveïdor centrat en la privacitat dels usuaris. \n \nConvé recordar que Alphabet genera  238.342 milions de dòlars (un 92.5% dels beneficis de l’empresa)  a través de la creació de perfils d’usuaris i la posterior personalització dels serveis (incloent la publicitat) en base aquests. \n \nUn parell d’aplicacions que poden servir d’alternatives son Tutanota i ProtonMail.",
+        "time": 10,
+        "rellevancia": 2,
+        "category": "Aplicacions i alternatives"
     },
     {
+        "title": "Esborra les Cookies",
         "id": 3,
-        "read": null,
-        "done": null,
-        "time": 25,
-        "category": "GestioDades",
-        "title": "La relació entre la privacitat i la comoditat",
-        "text": null
+        "text": "Les cookies son documents de text emmagatzemats en un dispositiu que permeten identificar i diferenciar aquest de la resta. Tot i que puguin tenir aplicacions útils i innòcues (com per exemple recordar si es vol el mode obscur en una pàgina web) són utilitzades majoritàriament per seguiment dels usuaris i per la personalització de la publicitat.\n \nEs recomana fer una neteja periòdica d’aquestes o fer servir una configuració de navegador que les esborri automàticament al tancar la sessió (preferiblement aquesta última opció).",
+        "time": 10,
+        "rellevancia": 8,
+        "category": "Entorn de navegadors"
     },
     {
+        "title": "Posa contrasenya a tots els teus dispositius",
         "id": 4,
-        "read": false,
-        "done": false,
+        "text": "Qualsevol dispositiu que no presenti un requisit d’autentificació és vulnerable a ser accedit per qualsevol persona. Això implica que totes les dades que s’hi emmagatzemen no estan protegides.\n \nRecomanem afegir com a requisit contrasenyes per a accedir als dispositius de l’usuari.\n \nEn el consell número 8 es presenten característiques  d’una bona contrasenya.",
+        "time": 20,
+        "rellevancia": 10,
+        "category": "Mètodes d'autentificació"
+    },
+    {
+        "title": "Esborra l’historial de navegació",
+        "id": 5,
+        "text": "Tot i que l’historial de navegació pot ser útil per a estalviar uns segons a l’usuari en cercar pàgines webs, és un risc per la privacitat ja que emmagatzema tota l’activitat realitzada a internet.\n \nRecomanem fer una neteja periòdica d’aquest o fer servir una configuració de navegador que l’esborri automàticament al tancar la sessió (preferiblement aquesta última opció).",
+        "time": 10,
+        "rellevancia": 7,
+        "category": "Entorn de navegadors"
+    },
+    {
+        "title": "Canvia el teu proveïdor de traducció",
+        "id": 6,
+        "text": "En cas que el teu proveïdor de traduccions sigui Google Translate(o qualsevol altre que no tingui una clara política de privacitat) recomanem fer el canvi a un proveïdor centrat en la privacitat dels usuaris.\n \nConvé recordar que Alphabet genera  238.342 milions de dòlars (un 92.5% dels beneficis de l’empresa)  a través de la creació de perfils d’usuaris i la posterior personalització dels serveis (incloent la publicitat) en base aquests.\n \nUn aplicació que pot servir d’alternativa és Deepl.",
+        "time": 10,
+        "rellevancia": 3,
+        "category": "Aplicacions i alternatives"
+    },
+    {
+        "title": "Efectua les trucades amb apps segures",
+        "id": 7,
+        "text": "Les empreses de telefonia a l’estat espanyol per llei emmagatzemen el teu nom, la teva adreça, el teu telèfon i el del receptor cada vegada que realitzes una trucada.\n \nEs recomana fer servir aplicacions que permetin efectuar trucades de forma segura.\n \nActualment només es pot obtenir l'anonimat en les trucades convencionals comprant targetes de prepagament a altres països ja que a Espanya és obligat l'enregistrament del DNI de la persona que la compra.",
+        "time": 10,
+        "rellevancia": 6,
+        "category": "Gestió de dades"
+    },
+    {
+        "title": "Millora les teves contrasenyes",
+        "id": 8,
+        "text": "En cas que les contrasenyes que facin servir no siguin prou robustes es recomana plantejar canviar-les.\n \nUna contrasenya robusta és aquella que és difícil de desxifrar. Les característiques d’una bona contrasenya són que sigui llarga (aquest és la més important, a partir de 20 caràcters es considera molt robusta), que sigui única i que s’allunyi de paraules que puguem trobar als diccionaris.\n \nRecomanem canviar totes les contrasenyes que l’usuari pugui tenir i reemplaçar-les per algunes de millor.\n \nEn el consell 15 recomanem una eina per dur aquest procés de forma més còmode sense comprometre la seguretat.",
+        "time": 30,
+        "rellevancia": 8,
+        "category": "Mètodes d'autentificació"
+    },
+    {
+        "title": "Canvia el teu proveïdor de mapes",
+        "id": 9,
+        "text": "En cas que el teu proveïdor de mapes sigui Google Maps(o qualsevol altre que no tingui una clara política de privacitat) recomanem fer el canvi a un proveïdor centrat en la privacitat dels usuaris.\n \nConvé recordar que Alphabet genera  238.342 milions de dòlars (un 92.5% dels beneficis de l’empresa)  a través de la creació de perfils d’usuaris i la posterior personalització dels serveis (incloent la publicitat) en base aquests.\n \nUn parell d’aplicacions que poden servir d’alternatives son OpenStreetMap i AppleMaps.",
+        "time": 10,
+        "rellevancia": 3,
+        "category": "Aplicacions i alternatives  "
+    },
+    {
+        "title": "La relació entre la seguretat, la privacitat i la usabilitat",
+        "id": 10,
+        "text": "Existeix un balanç entre la seguretat, la privacitat i la usabilitat d’un servei.\n \nGeneralment quan més segur més esforç requereix per parts dels usuaris.\n \nLa recomanació que oferim és que sigui el propi usuari qui decideixi quins consells aplica i quins ignora en funció de la seva situació i l’esforç que vulgui realitzar.",
+        "time": 2.2,
+        "rellevancia": 5,
+        "category": "Conceptes"
+    },
+    {
+        "title": "Fes servir un filtrador de contingut al navegar",
+        "id": 11,
+        "text": "Actualment al navegar rebem un gran nombre de peticions generalment no desitjades: anuncis, rastrejadors, etcètera.\n \nPer combatre aquest problema existeixen filtradors del contingut al navega.\n \nUna solució possible és realitzar aquest filtratge al canviar la configuració del navegador que usem.\n \nUna altra solució és fer ús d’extensions de navegadors.\n \nRecomanem canviar la configuració del navegador per impedir els rastrejadors.\n \nEn quant a extensions, un parell d’aplicacions que poden resultar útils son uBlock i PrivacyBadger.",
         "time": 15,
-        "category": "GestioDades",
-        "title": "La relació entre la privacitat i la comoditat",
-        "text": null
+        "rellevancia": 6,
+        "category": "Entorn de navegadors"
+    },
+    {
+        "title": "Canvia la protecció del mòbil",
+        "id": 12,
+        "text": "Dels diversos mètodes d’autentificació que ofereix un mòbil (patrons, pins, contrasenyes, biometria) les contrasenyes son el mètode més segur.\n \nEs per això que es recomana a l’usuari canviar el mètode escollit per a autentificació per contrasenya.\n \nRecordem que en el consell número 8 es presenten característiques  d’una bona contrasenya.",
+        "time": 15,
+        "rellevancia": 8,
+        "category": "Mètodes d'autentificació"
+    },
+    {
+        "title": "Canvia el teu navegador predeterminat",
+        "id": 13,
+        "text": "Actualment, existeixen diverses opcions de navegadors amb diverses funcionalitats afegides, però no tots tenen les mateixes pràctiques en el que privacitat respecta.\n \nRecomanem, especialment si el navegador predeterminat de l’usuari és Google Chrome, canviar a una de les opcions més centrades en la privacitat.\n \nUn parell d’aplicacions que poden servir d’alternatives son Mozilla Firefox i Safari.",
+        "time": 20,
+        "rellevancia": 9,
+        "category": "Entorn de navegadors"
+    },
+    {
+        "title": "Canvia el teu motor de cerca predeterminat",
+        "id": 14,
+        "text": "Actualment, existeixen diverses opcions de motors de cerca tot i que la quota de mercat està dominat per un únic: Google.\n \nGoogle té activades per defecte opcions que no respecten la privacitat del seus usuaris, que permeten establir pràctiques per explotar la informació que generen i que són els fonaments de les seves pràctiques publicitàries.\n \nPer aquest motius recomanem, especialment si el motor de cerca predeterminat de l’usuari és Google, canviar a una de les opcions més centrades en la privacitat.\n \nUna bona opció alternativa és DuckDuckGo.",
+        "time": 20,
+        "rellevancia": 9,
+        "category": "Entorn de navegadors"
+    },
+    {
+        "title": "Fes servir un gestor de contrasenyes",
+        "id": 15,
+        "text": "Un gestor de contrasenyes és una aplicació que permet la creació de contrasenyes amb diferents paràmetres (llargada, sets de caràcters a escollir, no repetició de caràcters similars, etc.) i les emmagatzema en un fitxer encriptat protegit per una contrasenya mestre.\n \nAquest tipus de programari permet reunir totes les contrasenyes en un únic punt i per tant només haver de memoritzar una contrasenya robusta.\n \nUna aplicació que pot servir a l’usuari per efectuar aquest procés és KeePass.",
+        "time": 20,
+        "rellevancia": 6,
+        "category": "Mètodes d'autentificació"
+    },
+    {
+        "title": "Fes servir Tor per un major anonimat",
+        "id": 16,
+        "text": "Existeixen dos grans tipus de navegadors en funció de la tecnologia que utilitzen per accedir a internet: els convencionals i els d’encaminament ceba.\n \nEls navegadors convencionals són aquells que estableixen una comunicació directa entre un usuari (client) i un servidor web. En aquesta situació ambdós dispositius (i qualsevol observador extern) saben qui es comunica amb qui. \n \nEls navegadors d’encaminament ceba són aquells en què la informació es xifra amb tantes capes com nodes intermedis existeixin. Aquesta forma permet amagar l’origen i el destí de les connexions web.\n \nEs per això que recomanem a l’usuari fer ús de Tor en cas de necessitar de navegació anònima.",
+        "time": 20,
+        "rellevancia": 9,
+        "category": "Entorn de navegadors"
+    },
+    {
+        "title": "Posa el mode avió al desplaçar-te",
+        "id": 17,
+        "text": "Les empreses de comunicació per llei emmagatzemen durant un mínim de 6 mesos les dades corresponents a la interacció amb els seus servies (telefonia, internet). Amb dades son més que suficients per reconstruir els teus desplaçaments, els teus contactes i els teus hàbits.\n \nTot i que la informació només pot ser entregada a les forces de l’ordre sota la investigació d’un delicte, aquesta no deixa de ser susceptible a filtracions.\n \nEs recomana a l’usuari que posi el mòbil en mode avió, apagat o directament no l’agafi en cas d’haver de realitzar desplaçaments que no vulgui que quedin enregistrats.",
+        "time": 3,
+        "rellevancia": 6,
+        "category": "Gestió de dades"
+    },
+    {
+        "title": "Deixa de fer servir Youtube",
+        "id": 18,
+        "text": "En cas que la teva plataforma per visualitzar vídeos sigui Youtube recomanem fer el canvi a una altre que no sigui tant agressiva respecte la privacitat de l’usuari.\n \nConvé recordar que Alphabet genera  238.342 milions de dòlars (un 92.5% dels beneficis de l’empresa)  a través de la creació de perfils d’usuaris i la posterior personalització dels serveis (incloent la publicitat) en base aquests. D’aquests un total de 28.845 milions de dòlars provenen exclusivament de la publicitat de Youtube.\n \nUn parell d’aplicacions que poden servir d’alternatives son Vimeo i Dtube.",
+        "time": 10,
+        "rellevancia": 3,
+        "category": "Aplicacions i alternatives"
+    },
+    {
+        "title": "Fes servir una VPN per navegar",
+        "id": 19,
+        "text": "Les VPN són extensions de la connexió que permeten establir connexions mitjançant túnels de forma que ni el proveïdor d’internet ni cap observador pot saber amb quin dispositiu s’estableix una connexió.\n \nOfereixen una capa extra de seguretat a les connexions a internet i permeten millorar la privacitat dels seus usuaris. S’ha de tenir en compte però que hi ha empreses de serveis VPN (generalment gratuïts) que es dediquen a vendre les dades de les  connexions dels seus usuaris per obtenir beneficis.\n \nPer aquests motius recomanem fer ús de VPNs amb polítiques de privacitat explícites en cas de voler obtenir una major privacitat sense haver de recórrer a l’ús de Tor.\n \nRecomanem però que l’usuari prioritzi Tor a les VPN en cas de ser intercanviables.",
+        "time": 40,
+        "rellevancia": 8,
+        "category": "Entorn de navegadors"
+    },
+    {
+        "title": "El pes que atribuïm als mòbils",
+        "id": 20,
+        "text": "Actualment atribuïm un pes als mòbils cada cop major. Hem concentrat tants serveis i emmagatzem tantes dades en un sol dispositiu (missatges, fotografies, etc.) que ja no  ens podem permetre perdre’l.\n \nAixò exposa una gran vulnerabilitat ja que hem convertit el telèfon mòbil en un punt únic de fallada respecte la privacitat de les nostres vides.\n \nÉs per això que aquest consell convida a fer una reflexió de la dependència que ens ha generat aquest dispositiu. A pensar en quines dades tenim enregistrades a les nostres butxaques i si realment les necessitem.\n \nConvidem a l’usuari a dedicar uns minuts al dia a anar buidant totes les dades no rellevants que tinguem emmagatzemades.",
+        "time": 2.3,
+        "rellevancia": 5,
+        "category": "Conceptes"
+    },
+    {
+        "title": "Diferents usuaris, diferents necessitats",
+        "id": 30,
+        "text": "Existeixen diferents perfils d’usuaris en els serveis digitals que presenten diferents necessitats. Aquesta aplicació es centra en el perfil «d’usuari mitjà» (aquell que no genera cap especial interès a qualsevol agència governamental, institució política, policial, etc.).\n \nEs recomana a l’usuari fer una reflexió sobre quin perfil d’usuari té i quines necessitats es generen.\n \nSi l’usuari pertany a qualsevol altre perfil aquestes directrius li poden servir de base però segurament siguin insuficients per garantir la seva seguretat.",
+        "time": 2.4,
+        "rellevancia": 5,
+        "category": "Conceptes"
     }
+
 ]

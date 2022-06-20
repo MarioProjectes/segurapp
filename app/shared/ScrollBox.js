@@ -108,6 +108,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: colors.textBackgroundColor,
+        paddingTop: 10,
       },
 
       textBodyStyle: {
@@ -117,7 +118,7 @@ const styles = StyleSheet.create({
 
           paddingHorizontal: 20,
           //paddingTop: 20,
-          //marginBottom: 0,
+          marginBottom: 20,
       },
   
       entesosSquare:{
@@ -126,7 +127,8 @@ const styles = StyleSheet.create({
           borderRadius: 20,
           backgroundColor: colors.barBackgroundColor,
 
-          marginVertical: 40,
+          marginTop: 5,
+          marginBottom: 40,
           padding: 10,
           paddingHorizontal: 50,
       },

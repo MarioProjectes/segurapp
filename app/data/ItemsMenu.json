@@ -1,19 +1,11 @@
 [
     {
-        "nom": "Consell del dia",
-        "id": 0
-    },
-    {
         "nom": "Consells ordenats:",
         "id": 1
     },
     {
         "nom": "Numéricament",
         "id": 2
-    },
-    {
-        "nom": "Multinivell",
-        "id": 3
     },
     {
         "nom": "Per temàtiques",

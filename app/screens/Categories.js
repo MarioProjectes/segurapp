@@ -17,7 +17,6 @@ export default function Categories({route, navigation}) {
     const {customData} = route.params;
 
     const handlePressItemCategories = (category) => {
-        console.log(category)
         navigation.navigate("ConsellsFiltrats", {customData, category})
 
     }

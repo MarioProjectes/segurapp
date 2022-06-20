@@ -1,25 +1,27 @@
 
 import { StatusBar } from 'react-native';
 import { StyleSheet, Text,  View, SafeAreaView, Platform } from 'react-native';
-import { TouchableNativeFeedback } from 'react-native';
+import { TouchableNativeFeedback, Linking} from 'react-native';
 import { Dimensions } from 'react-native'; // Dimensions.get(screen | window) -> same on ios, diff in android
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 import colors from '../config/colors'
+
 const customData = require('../data/Consells.json')
 
 
+/*
+  mimimi Aquest component mostra la pantalla d'inici
+*/
 export default function WelcomeScreen({navigation}) {
   
 
   const handlePressComença = async () => {
     //resetejaTot();
     try{
-      console.log("Entro amb valors previs")
       const vectorInitialized = await AsyncStorage.getItem('@vectorInitialized');
       const vector = await AsyncStorage.getItem('@vectorDone');
-      console.log("Valors previs:", vector)
       if(vectorInitialized !== null && vectorInitialized){ 
         //navigation.navigate('ConsellNumericament', {customData})
         
@@ -29,7 +31,6 @@ export default function WelcomeScreen({navigation}) {
 
       }
       else{
-        console.log("Genero valors nous")
          initializeValues();
       }
     } catch(e){
@@ -83,8 +84,9 @@ export default function WelcomeScreen({navigation}) {
       <View style={styles.bottomSquareStyle}>
         <View style={[styles.smallSquare, styles.squareBottomLeft]}></View>
         <View style={[styles.smallSquare, styles.squareBottomRight]}></View>
-        <TouchableNativeFeedback>
-          <View style={styles.botoProjecte}> 
+        <TouchableNativeFeedback onPress={() => Linking.openURL('https://github.com/MarioProjectes/segurapp')}>
+          <View style={[styles.botoProjecte, {flexDirection:"row"}]}> 
+            <Icon style={styles.linkIconStyle} name="github"></Icon>
             <Text style={styles.startTextStyle}>Sobre el {"\n"} projecte</Text>
           </View>
         
@@ -213,4 +215,10 @@ const styles = StyleSheet.create({
     right: '-9.3%',
     bottom: '-16.8%',
   },
+
+  linkIconStyle: {
+    fontSize: 30,
+    marginLeft: -30,
+    paddingRight: 10,
+  }
 })

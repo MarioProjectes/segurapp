@@ -1,6 +1,9 @@
 const { getDefaultConfig } = require('metro-config');
 
 module.exports = (async () => {
+})();
+/*
+module.exports = (async () => {
     const {
         resolver: {sourceExts, assetExts },
     } = await getDefaultConfig();
@@ -13,4 +16,4 @@ module.exports = (async () => {
             sourceExts: [...sourceExts, 'svg'],
         },
     };
-})();
+})();*/

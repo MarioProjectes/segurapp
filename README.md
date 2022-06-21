@@ -24,6 +24,12 @@ En aquest repositori es troben tots els arxius corresponents al codi font de l'a
 Actualment l'aplicació es troba en versió Beta. Es possible que es modifiqui en un futur.
 
 
+### Demostració
+
+A l'arxiu ``Demo.mp4`` es fa una demostració del funcionament de l'aplicació.
+
+
 ### Llicència 
 
 Aquest projecte es pot descàrregar i compartir si no és amb finalitat comercial sempre i quan es respecti la propietat intel·lectual.
+

@@ -1,32 +1,31 @@
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import React from 'react';
 import Constants from 'expo-constants'
 import { StyleSheet, SafeAreaView, Platform, Text, View} from 'react-native';
 import { StatusBar } from 'react-native';
-
-import React from 'react';
-import { Dimensions } from 'react-native'; // Dimensions.get(screen | window) -> same on ios, diff in android
+import { Dimensions } from 'react-native';
 import { TouchableNativeFeedback } from 'react-native-gesture-handler';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useState, useEffect} from 'react'
-
-
-
-
 
 import colors from '../config/colors';
 import Footer from '../shared/footer';
 import ScrollBox from '../shared/ScrollBox';
 
-
+/*
+    Aquest component mostra el títol i el text del consell amb Id dessitjat.
+    En prèmer la vista "Entesos" es modifica l'estat i l'emmagatzematge local
+    per a marcar el consell com a realitzat. Això afecta la presentació ja que
+    el consell passa a mostrar-se en verd.
+*/
 export default function Consell({route, navigation}) {
   const {customData, vectorDoneParam, id, category} = route.params;
-
   const [vectorDone, setVectorDone] = useState(vectorDoneParam)
 
-  useEffect(() => {
-  })
+  useEffect(() => {})
 
-
-
+  /*
+    Aquest mètode realitza l'emmagatzematge local
+  */
   async function writeValues(newVector){
     try{
       AsyncStorage.setItem('@vectorDone', JSON.stringify(newVector))
@@ -36,27 +35,32 @@ export default function Consell({route, navigation}) {
     }
   }
 
-
+  /*
+    Aquest mètode modifica l'estat i crida a l'emmagatzematge dels valors en local.
+  */
   const escriuEstat = (param) => {
-
     const newVector = [...vectorDone];
     newVector[id] = param;
     setVectorDone(newVector)
     writeValues(newVector)
   }
 
-
+  /*
+    Workaround some navigation and state issues
+  */
   const entesosWasPressed = (param) => {
     escriuEstat(param);
+    navigation.reset({
+      index: 0,
+      routes: [{name: "WelcomeScreen", params: {customData}}, {name: "ConsellsFiltrats", params: {customData, category}}]
+    })
   }
 
   const handlePressMenu = () => {
     route.name==="AccesRapid" 
         ? navigation.goBack()
         : navigation.navigate("AccesRapid", {customData})
-    
   }
-
 
   return (
     <SafeAreaView style={styles.container}>
@@ -68,7 +72,7 @@ export default function Consell({route, navigation}) {
             translucent={true}
         />
 
-        <View style= {vectorDone[id]                    //This state value modifies styling to green 
+        <View style= {vectorDone[id]  //This state value modifies styling to green 
             ? [myHeaderStyles.barStyle, {backgroundColor: colors.greenBackgrouncColor}]
             : myHeaderStyles.barStyle }>
             <TouchableNativeFeedback onPress={handlePressMenu}>
@@ -85,13 +89,9 @@ export default function Consell({route, navigation}) {
             </View>
             <View style={{width: 40}}/>
         </View>
-
         <View style={{flex: 1, paddingTop: 20}}>
           <ScrollBox modifyState={entesosWasPressed}/>
-
         </View>
-
-
         <Footer/>
     </SafeAreaView>
   )
@@ -112,7 +112,6 @@ const styles = StyleSheet.create({
 
 
 const myHeaderStyles = StyleSheet.create({
-      
   barStyle: {
       flex: 0,
       flexDirection: 'row',

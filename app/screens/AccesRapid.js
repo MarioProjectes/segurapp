@@ -1,23 +1,27 @@
-import Constants from 'expo-constants'
-import { StyleSheet, SafeAreaView, Platform, Text, View, FlatList } from 'react-native';
-import { ScrollView, TouchableNativeFeedback } from 'react-native-gesture-handler';
+import { StyleSheet, SafeAreaView, Text, View, FlatList } from 'react-native';
+import { TouchableNativeFeedback } from 'react-native-gesture-handler';
+import { Dimensions } from 'react-native'; 
 
 import colors from '../config/colors';
 import Footer from '../shared/footer';
-import { Dimensions } from 'react-native'; // Dimensions.get(screen | window) -> same on ios, diff in android
-import { text } from '@fortawesome/fontawesome-svg-core';
 
-
+/*
+    Els elements del menú es carreguen del document "ItemesMenu.json".
+    Això permet modificar o afegir de forma sencilla els elements.
+*/
 const itemsMenu = require('../data/ItemsMenu.json')
 
-
-
+/*
+    Aquest component mostra el menú d'accés ràpid.
+    Presenta diferents vistes que en ser premudes naveguen o la pantalla "Categories"
+    o a la pantalla "ConsellsFiltrats" amb paràmetres per mostrar els consells filtrats.
+*/
 export default function AccesRapid({route, navigation}) {
 
     const {customData} = route.params;
 
     const handlePressItemMenu = (nom) => {
-        if(nom==="Numéricament"){
+        if(nom==="Numèricament"){
             const category = "all"
             navigation.navigate("ConsellsFiltrats", {customData, category})
         }
@@ -34,8 +38,6 @@ export default function AccesRapid({route, navigation}) {
         }
     }
     
-   
-
     return(
         <SafeAreaView style={styles.container}>
             <View style={{flex: 1}}>
@@ -71,11 +73,6 @@ export default function AccesRapid({route, navigation}) {
 }
 
 
-
-
-
-
-
 const styles = StyleSheet.create({
     container: {
         flex: 1,
@@ -83,7 +80,6 @@ const styles = StyleSheet.create({
         backgroundColor: colors.mainBackgroundColor,
         alignItems: 'center',
     },
-
 
     itemMenu: {
         backgroundColor: colors.textBackgroundColor,
@@ -99,6 +95,4 @@ const styles = StyleSheet.create({
     textStyle: {
         fontSize: 24,
     }
-
-
   })

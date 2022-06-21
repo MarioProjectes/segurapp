@@ -8,7 +8,6 @@ export default{
     
     barBackgroundColor: '#9BB7EC',
     
-
     greenBackgrouncColor: '#90DE66',
 
     statusbarBackgroundColor: '#7084ab',

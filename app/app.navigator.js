@@ -2,22 +2,22 @@ import React from 'react'
 import { NavigationContainer, StackActions } from '@react-navigation/native'
 import { createStackNavigator, TransitionPresets } from '@react-navigation/stack'
 
-
-import WelcomeScreen from './screens/WelcomeScreen'
-import ConsellDiari from './screens/ConsellDiari'
-import ConsellNumericament from './screens/ConsellNumericament'
-import Consell from './screens/Consell'
-import Header from './shared/header'
-import Footer from './shared/footer'
 import AccesRapid from './screens/AccesRapid'
 import Categories from './screens/Categories'
+import Consell from './screens/Consell'
 import ConsellsFiltrats from './screens/ConsellsFiltrats'
-
-import demo from './screens/demo'
+import Footer from './shared/footer'
+import Header from './shared/header'
+import WelcomeScreen from './screens/WelcomeScreen'
 
 const Stack = createStackNavigator();
 
 
+
+/*
+    Aquest component crea la navegació de l'aplicació mitjançant una pila.
+    Per fer-ho enregistra totes les pantalles dels fitxers importats.
+*/
 const AppNavigator = ({navigation}) => (
     <NavigationContainer>
         <Stack.Navigator screenOptions={{
@@ -27,33 +27,6 @@ const AppNavigator = ({navigation}) => (
                 options={{headerShown: false}}
                 name="WelcomeScreen" 
                 component={WelcomeScreen}
-            />
-            <Stack.Screen 
-                options={{ 
-                    header: () =>  
-                        <Header 
-                            navigation={navigation} 
-                            title="Consell del dia"
-                            param= {true}/>,
-                }}
-                name="ConsellDiari"
-                component={ConsellDiari}
-            />
-            <Stack.Screen
-                options={{
-                    header: () =>
-                        <Header
-                            navigation={navigation}
-                            title="Consells "
-                            param= {true}/>,
-                }}
-                name="ConsellNumericament"
-                component={ConsellNumericament}
-            />
-            <Stack.Screen
-                options={{headerShown: false}}
-                name="demo"
-                component={demo}
             />
             <Stack.Screen
                 options={{
@@ -91,12 +64,8 @@ const AppNavigator = ({navigation}) => (
                 name="Footer"
                 component={Footer}
             />
-        
         </Stack.Navigator>
     </NavigationContainer>
 )
-
-
-  
 
 export default AppNavigator;    

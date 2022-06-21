@@ -3,16 +3,17 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { StatusBar } from 'react-native';
 import { TouchableNativeFeedback } from 'react-native-gesture-handler';
-import Icon from 'react-native-vector-icons/FontAwesome';
-
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { faXmark} from "@fortawesome/free-solid-svg-icons";
 
-
-
-
 import colors from '../config/colors';
 
+/*
+    Aquest component ofereix una barra superior a l'aplicació comuna a totes
+    les pantalles excepte la principal. Mostra un requadre amb tres barres
+    que en ser premut mostra el menú d'accés ràpid. Un cop premut mostra 
+    una creu per indicar que en prémer-la es tanca el menú.
+*/
 export default function Header({title, param}){
 
     const navigation = useNavigation();
@@ -23,9 +24,7 @@ export default function Header({title, param}){
         route.name==="AccesRapid" 
             ? navigation.goBack()
             : navigation.navigate("AccesRapid", {customData})
-        
     }
-
 
     return (
         <View style={param 
@@ -50,19 +49,13 @@ export default function Header({title, param}){
 
                 }
             </TouchableNativeFeedback>
-
-            <View>
+        <View>
                 <Text style={myHeaderStyles.textTitolStyle}> {title}</Text>
             </View>
             <View style={{width:40} /*//Invisible view to maintain 3 component logic*/}/>  
         </View>
     )
 }
-
-/*
-
-   
-*/
 
 const myHeaderStyles = StyleSheet.create({
     barStyle: {

@@ -1,24 +1,29 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import { Dimensions } from 'react-native'; // Dimensions.get(screen | window) -> same on ios, diff in android
+import { StyleSheet, View } from 'react-native';
 import { TouchableNativeFeedback } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { Alert } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-
 import colors from '../config/colors';
-import ConsellBox from './ConsellBox';
 
+/*
+    Aquest component ofereix una barra inferior a l'aplicació comuna a totes
+    les pantalles excepte la principal. Mostra una fletxa per tornar enrere,
+    una casa per tornar a la pantalla principal i una paperera per esborrar
+    el progrés emmagatzemat. 
+*/
 export default function Footer({}){
     const route = useRoute();
     const {customData, category} = route.params;
-
     const navigation = useNavigation();
  
+    /*
+        Workaround some navigation and state issues
+    */
     const handlePressArrow = () => {
-        if(route.name === "Consell"){   //Crappy approach, but it works
+        if(route.name === "Consell"){ 
             navigation.reset({
                 index: 0,
                 routes: [{name: "WelcomeScreen", params: {customData}}, {name: "ConsellsFiltrats", params: {customData, category}}]
@@ -38,9 +43,12 @@ export default function Footer({}){
     async function deleteData(){
         await AsyncStorage.clear()
         navigation.navigate('WelcomeScreen')
-        
     }
     
+    /*
+        Aquest mètode mostra una alterta personalitzada que demana a l'usuari
+        comfirmació abans d'esborrar el progrés emmagatzemat.
+    */
     const handlePressTrashButton = () => {
         Alert.alert("Borrar progrés","Vols esborrar el progrés?",[{text:"No"},{text:"Sí", onPress:deleteData}], {cancelable: true} )
     };
@@ -55,16 +63,13 @@ export default function Footer({}){
             <TouchableNativeFeedback onPress={handlePressHomeButton}>
                 <View>
                     <Icon style={styles.homeButtonStyle} name="home"></Icon>
-
                 </View>
             </TouchableNativeFeedback>
             <TouchableNativeFeedback onPress={handlePressTrashButton}>
                 <View style={styles.gear}>
                     <Icon style={{fontSize: 40}}name="trash"></Icon>
-
                 </View>
             </TouchableNativeFeedback>
-            
         </View>
     )
 }
@@ -88,8 +93,6 @@ const styles = StyleSheet.create({
     },
 
     returnArrow :{
-        //position: 'absolute',
-        //left: Dimensions.get('window').width <= 360 ? '3%' :  20,
         fontSize: 30,
         padding: 5,
         paddingTop: 10,

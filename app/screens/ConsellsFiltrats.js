@@ -1,20 +1,21 @@
-import Constants from 'expo-constants'
 import { StyleSheet, SafeAreaView, Platform, Text, View, FlatList } from 'react-native';
 import { StatusBar } from 'react-native';
 import { Dimensions } from 'react-native';
-
 import { TouchableNativeFeedback } from 'react-native';
+import { useState, useEffect} from 'react'
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import Constants from 'expo-constants'
 import * as Progress from 'react-native-progress'
 
 import colors from '../config/colors';
 import Footer from '../shared/footer';
-import { useState, useEffect} from 'react'
 
-
-
-
-
+/*
+    Aquest component mostra el llistat de consell sencer en accedir 
+    per defecte o al prèmer consells "Numèricament" des d'accés ràpid.
+    També permet la presentació dels consells filtrats per temàtiques,
+    només els incomplertes o mostrar-los ordenats per temps d'execució.
+*/
 export default function ConsellsFiltrats({route, navigation}) {
     const {customData, category} = route.params;
     const [loading, setLoading] = useState(true)
@@ -22,6 +23,9 @@ export default function ConsellsFiltrats({route, navigation}) {
 
     const filteredData = filterData()
 
+    /*
+        Aquest mètode filtra el llistat de consells en funció de la categoria.
+    */
     function filterData (){
         if (category === "all")
             return customData.sort(function(a,b){return a.id > b.id})
@@ -40,6 +44,10 @@ export default function ConsellsFiltrats({route, navigation}) {
     }), [vectorDone]
 
 
+    /*
+        Aquest mètode llegeix l'estat inicial del llistat de consells
+        per oferir la presentació i estableix l'estat.
+    */
     async function readInitialValuesSetState(){
        try{
            const tempo = await AsyncStorage.getItem('@vectorDone');
@@ -49,36 +57,26 @@ export default function ConsellsFiltrats({route, navigation}) {
           
            setLoading(false)
         } catch (e){
-            console.log("Error a  ConsellNumericament:readInititalValues")
+            console.log("Error a ConsellsFiltrats:readInititalValues")
         }
     }
-
-    async function writeValues(newVector){
-        await AsyncStorage.setItem('@vectorDone', JSON.stringify(newVector))
-    }
-
-    //Aquesta funció existia de prova, qui modifica el vector és Consell->Entesos
-    async function tempo(id){
-        const newVector = [...vectorDone]
-        newVector[id] = !newVector[id]
-        setVectorDone(newVector);
-        writeValues(newVector);
-     }
-
 
     const handlePressConsell = (id) => {
         const vectorDoneParam = [...vectorDone]
         navigation.navigate("Consell", {customData, vectorDoneParam, id, category})
     }
 
-
     const handlePressMenu = () => {
         route.name==="AccesRapid" 
             ? navigation.goBack()
             : navigation.navigate("AccesRapid", {customData})
-        
-      }
+    }
 
+    /*
+        És rellevant mencionar que en cas que no s'haguin llegit els valors encara
+        i per tant no es pugui establir un estat es mostra un seguit d'indicadors
+        visuals de càrrega.
+    */
     return(
         <SafeAreaView style={styles.container}>
         <StatusBar
@@ -88,7 +86,6 @@ export default function ConsellsFiltrats({route, navigation}) {
             barStyle="light-content"
             translucent={true}
         />
-
         <View style= {myHeaderStyles.barStyle }>
             <TouchableNativeFeedback onPress={handlePressMenu}>
               <View style={myHeaderStyles.smallSquare}>
@@ -99,7 +96,6 @@ export default function ConsellsFiltrats({route, navigation}) {
                   </View>
               </View>
             </TouchableNativeFeedback>
-           
             {
                 category === "all"
                 ?
@@ -120,8 +116,6 @@ export default function ConsellsFiltrats({route, navigation}) {
                     </Text>
                 </View>
             }
-              
-
             <View style={{width: 40}}/>
         </View>
 
@@ -172,16 +166,10 @@ export default function ConsellsFiltrats({route, navigation}) {
                 </FlatList>
             }
         </View>
-
         <Footer/>
     </SafeAreaView>
     )
 }
-
-
-
-
-
 
 
 const styles = StyleSheet.create({

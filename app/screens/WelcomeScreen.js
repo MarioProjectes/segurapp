@@ -12,23 +12,25 @@ const customData = require('../data/Consells.json')
 
 
 /*
-  mimimi Aquest component mostra la pantalla d'inici
+  Aquest component mostra la pantalla d'inici.
+  En prèmer la vista "Comença" es navega a la pantalla "ConsellsFiltrat"
+  En prèmer la vista "Sobre el projecte" es visita l'enllaç del repositori
+  de GitHub on s'emmagatzema el codi i es presenta el treball del TFG.
 */
 export default function WelcomeScreen({navigation}) {
-  
 
+  /*
+    Aquest mètode fa la comprovació de l'existència prèvia d'emmagatzematge
+    local. En cas que sigui el primer cop que s'accedeix a l'aplicació crida
+    a "initializeValues" que gestiona la creació de les estructures necessàries.
+  */
   const handlePressComença = async () => {
-    //resetejaTot();
     try{
       const vectorInitialized = await AsyncStorage.getItem('@vectorInitialized');
       const vector = await AsyncStorage.getItem('@vectorDone');
-      if(vectorInitialized !== null && vectorInitialized){ 
-        //navigation.navigate('ConsellNumericament', {customData})
-        
+      if(vectorInitialized !== null && vectorInitialized){         
         const category = "all"
         navigation.navigate('ConsellsFiltrats', {customData, category})
-
-
       }
       else{
          initializeValues();
@@ -39,46 +41,43 @@ export default function WelcomeScreen({navigation}) {
   };
 
 
+  /*
+    Aquest mètode crea les estructures necessàries per l'emmagatzematge local.
+    "vectorInitialized" és un valor boleà que indica que ja s'ha accedit prèviament.
+    "vectorDone" és un vector de valors boleans que marca l'estat dels consells.
+    "vectorRead" és un vector de boleans dissenyat per una funcionalitat no implementada.
+
+  */
   async function initializeValues (){
     const vectorDone = customData.map( () => false);
     const vectorRead = vectorDone;
     await AsyncStorage.setItem('@vectorInitialized', JSON.stringify(true))
     await AsyncStorage.setItem('@vectorDone', JSON.stringify(vectorDone))
     await AsyncStorage.setItem('@vectorRead', JSON.stringify(vectorRead))
-
-    //navigation.navigate('ConsellNumericament', {customData})
     const category = "all"
     navigation.navigate('ConsellsFiltrats', {customData, category})
-
   }
-
-  async function resetejaTot() {
-    await AsyncStorage.clear();
-  }
-
 
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar
-            hidden= {Dimensions.get('window').width <= 360 ? true :  false}
-            animated={true}
-            backgroundColor= {colors.statusbarBackgroundColor} // alternatives: '#7d94be' ,'#67799c'
-            barStyle="light-content"
-            translucent={true}
-        />
+        hidden= {Dimensions.get('window').width <= 360 ? true :  false}
+        animated={true}
+        backgroundColor= {colors.statusbarBackgroundColor}
+        barStyle="light-content"
+        translucent={true}
+      />
       <View style={styles.topSquareStyle}>
-        <View style={[styles.smallSquare, styles.squareTopLeft]}></View>
-        <View style={[styles.smallSquare, styles.squareTopRight]}></View>
-        <View>
-          <Text style={styles.startTextStyle}> Segurapp</Text>
+      <View style={[styles.smallSquare, styles.squareTopLeft]}></View>
+      <View style={[styles.smallSquare, styles.squareTopRight]}></View>
+      <View>
+        <Text style={styles.startTextStyle}> Segurapp</Text>
+      </View>
+      <TouchableNativeFeedback onPress={handlePressComença}>
+        <View style={styles.botoComeça}>
+          <Text style={styles.startTextStyle}>Comença</Text>
         </View>
-        
-
-        <TouchableNativeFeedback onPress={handlePressComença}>
-          <View style={styles.botoComeça}>
-            <Text style={styles.startTextStyle}>Comença</Text>
-          </View>
-        </TouchableNativeFeedback>    
+      </TouchableNativeFeedback>    
 
       </View>
       <View style={styles.bottomSquareStyle}>
@@ -87,7 +86,7 @@ export default function WelcomeScreen({navigation}) {
         <TouchableNativeFeedback onPress={() => Linking.openURL('https://github.com/MarioProjectes/segurapp')}>
           <View style={[styles.botoProjecte, {flexDirection:"row"}]}> 
             <Icon style={styles.linkIconStyle} name="github"></Icon>
-            <Text style={styles.startTextStyle}>Sobre el {"\n"} projecte</Text>
+            <Text style={[styles.startTextStyle, {marginLeft: -10}]}>Sobre el projecte</Text>
           </View>
         
         </TouchableNativeFeedback>        
@@ -108,10 +107,8 @@ const styles = StyleSheet.create({
     
     topSquareStyle: {
       flex: 0,
-
       justifyContent: 'center',
       alignItems: 'center',
-      
       height: 280,
       minWidth: 271,
       width: 217,
@@ -120,15 +117,12 @@ const styles = StyleSheet.create({
       borderWidth: 2,
       marginTop: '5%',
       marginBottom: 124,
-  
     },
   
     bottomSquareStyle: {
       flex: 0,
-
       justifyContent: 'center',
       alignItems: 'center',
-    
       height: 153,
       minWidth: 271,
       width: 217,
@@ -142,16 +136,13 @@ const styles = StyleSheet.create({
     flex: 0,
     position: 'absolute',
     backgroundColor: colors.barBackgroundColor,
-    
     width: 245,
     height: 103,
     minWidth: 245,
     aspectRatio:  245 / 103,
-
     borderRadius: 20,
     alignItems: 'center',
     justifyContent: 'center',
-    
     bottom: '-19%',
   },
 
@@ -159,7 +150,6 @@ const styles = StyleSheet.create({
     flex: 0,
     position: 'absolute',
     backgroundColor: colors.barBackgroundColor,
-    
     width: 245,
     height: 103,
     minWidth: 245,
@@ -168,11 +158,7 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     alignItems: 'center',
     justifyContent: 'center',
-    
     top: '-20%',
-    
-
-    //boxSizing: border-box,
   },
 
   startTextStyle: {
@@ -183,7 +169,6 @@ const styles = StyleSheet.create({
     fontSize: 36,
   },
 
-  
   smallSquare: {
     borderWidth: 2,
     borderColor: colors.welcomeScreenSquares,
@@ -199,7 +184,6 @@ const styles = StyleSheet.create({
     top: '-9%',
   },
 
-
   squareTopRight: {
     right: '-9.3%',
     top: '-9%',
@@ -210,7 +194,6 @@ const styles = StyleSheet.create({
     bottom: '-16.8%',
   },
 
-
   squareBottomRight: {
     right: '-9.3%',
     bottom: '-16.8%',
@@ -218,7 +201,7 @@ const styles = StyleSheet.create({
 
   linkIconStyle: {
     fontSize: 30,
-    marginLeft: -30,
-    paddingRight: 10,
+    marginLeft: -40,
+    paddingRight: 20,
   }
 })

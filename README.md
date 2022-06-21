@@ -1,4 +1,4 @@
-# Pedagogia en la ciberseguretat i en la privacitat de dades
+# Pedagogia en la ciberseguretat i la privacitat de dades
 
 Aquest projecte corresopn al Treball de Fi de Grau - TFG de la UPC...
 Tinc pendent modificar la plantilla.

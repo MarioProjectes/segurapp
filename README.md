@@ -1,16 +1,14 @@
 # Pedagogia en la ciberseguretat i la privacitat de dades
 
-Aquest projecte corresopn al Treball de Fi de Grau - TFG de la UPC...
-Tinc pendent modificar la plantilla.
+Aquest projecte correspon al Treball de Fi de Grau - TFG de l’especialitat de Tecnologies de la Informació del Grau en Enginyeria Informàtica 
+de la Facultat d’Informàtica de Barcelona (FIB) de la UNIVERSITAT POLITÈCNICA DE CATALUNYA (UPC) - BarcelonaTech FACULTAT D’INFORMÀTICA DE BARCELONA (FIB)
+, seguint el pla d’estudis aprovat a la Junta de la facultat extraordinària celebrada el dia 21 d’octubre de 2009.
 
-Initially appeared on
-[gist](https://gist.github.com/PurpleBooth/109311bb0361f32d87a2). But the page cannot open anymore so that is why I have moved it here.
 
-## Getting Started
+## Memòria
 
-These instructions will give you a copy of the project up and running on
-your local machine for development and testing purposes. See deployment
-for notes on deploying the project on a live system.
+El document en pdf de la mèmoria del treball es pot trobar en aquest repositori sota el nom "Memòria.pdf".
+
 
 ### Prerequisites
 

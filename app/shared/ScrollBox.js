@@ -6,10 +6,9 @@ import { useNavigation, useRoute } from '@react-navigation/native';
 
 import colors from '../config/colors';
 
-
-
 /*
-    Aquest component mostra 
+    Aquest component ofereix una vista del tipus scroll que permet
+    mostrar el contingut del text dels consells de forma agradable.
 */
 export default function ScrollBox(props) {
     const navigation = useNavigation();
